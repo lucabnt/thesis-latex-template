@@ -43,20 +43,6 @@ This template includes multiple documentation files to help you get started:
 
 **New users**: Start with [QUICKSTART.md](QUICKSTART.md) for a fast setup!
 
-## 📋 Table of Contents
-
-- [Documentation Files](#documentation-files)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Requirements](#requirements)
-- [Quick Start](#quick-start)
-- [Compilation](#compilation)
-- [Customization](#customization)
-- [Usage Guide](#usage-guide)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## ✨ Features
 
 - **Professional formatting** with customizable margins, spacing, and fonts
