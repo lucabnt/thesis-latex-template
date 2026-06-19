@@ -13,6 +13,27 @@ This template was automatically generated from a completed thesis project and ha
 
 **Use at your own discretion.** This is provided as-is without warranty.
 
+## 🙏 Acknowledgments
+
+This template is derived from a LaTeX thesis template that appears to have origins from [**KAUST (King Abdullah University of Science and Technology)**](https://www.overleaf.com/latex/templates/kaust-official-thesis-template/mrcyxjvwpqdn), originally distributed under **Creative Commons CC BY 4.0** license.
+
+**Original Template License:** [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
+
+**Modifications Made:**
+- Complete restructuring and reorganization of content
+- All original thesis content replaced with generic placeholders
+- Added comprehensive documentation (README, QUICKSTART, OVERVIEW, CHANGELOG)
+- Added cross-platform compilation scripts
+- Enhanced with examples for figures, tables, equations, and citations
+- Improved folder structure and organization
+- Added .gitignore and Git-ready configuration
+
+**This Modified Template License:** This derivative work maintains compatibility with CC BY 4.0 and can also be used under MIT License terms for maximum flexibility.
+
+**Note:** All specific thesis content has been removed and replaced with generic academic examples. The template structure and LaTeX configuration are derived from the original CC BY 4.0 licensed work.
+
+---
+
 ## 📚 Documentation Files
 
 This template includes multiple documentation files to help you get started:
