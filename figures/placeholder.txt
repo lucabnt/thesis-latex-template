@@ -1,0 +1,22 @@
+This folder is for storing your thesis figures and images.
+
+Supported formats:
+- PNG (.png)
+- JPEG (.jpg, .jpeg)
+- PDF (.pdf)
+- EPS (.eps)
+
+Best practices:
+1. Use descriptive filenames (e.g., "methodology_flowchart.png" instead of "fig1.png")
+2. Keep original high-resolution versions of your figures
+3. For vector graphics, prefer PDF or EPS formats
+4. For photographs or complex images, use PNG or high-quality JPEG
+5. Organize figures in subfolders if you have many (e.g., figures/Chapter1/, figures/Chapter2/)
+
+Example usage in LaTeX:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/your_figure.png}
+    \caption{Your figure caption here}
+    \label{fig:your_label}
+\end{figure}

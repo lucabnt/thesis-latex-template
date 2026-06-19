@@ -36,9 +36,9 @@ This thesis template is a complete, production-ready LaTeX project based on a su
 21. **.gitignore** - Git ignore file for LaTeX projects (127 lines)
 
 ### Directory Structure (3 folders + README files)
-- **Figure/** - For storing images and figures (with placeholder.txt)
-- **Data and Code/** - For research data and analysis scripts (with README.txt)
-- **Final PDFs/** - For compiled thesis versions (with README.txt)
+- **figures/** - For storing images and figures (with placeholder.txt)
+- **data/** - For research data and analysis scripts (with README.txt)
+- **output/** - For compiled thesis versions (with README.txt)
 
 ## 🎯 Key Features
 

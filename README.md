@@ -96,11 +96,11 @@ Thesis-Template/
 ├── QUICKSTART.md           # Quick start guide for beginners
 ├── CHANGELOG.md            # Version history and planned features
 ├── TEMPLATE_OVERVIEW.md    # Comprehensive template overview
-├── Figure/                 # Folder for images and figures
+├── figures/                # Folder for images and figures
 │   └── placeholder.txt
-├── Data and Code/          # Folder for data and analysis code
+├── data/                   # Folder for data and analysis code
 │   └── README.txt
-└── Final PDFs/             # Folder for final compiled PDFs
+└── output/                 # Folder for final compiled PDFs
     └── README.txt
 ```
 
@@ -221,12 +221,12 @@ Adjust formatting in `config.tex`:
 
 ### Adding Figures
 
-1. Place your image in the `Figure/` folder
+1. Place your image in the `figures/` folder
 2. Include it in your chapter:
    ```latex
    \begin{figure}[h]
        \centering
-       \includegraphics[width=0.8\linewidth]{Figure/your_image.png}
+       \includegraphics[width=0.8\linewidth]{figures/your_image.png}
        \caption{Your caption here}
        \label{fig:your_label}
    \end{figure}
@@ -335,7 +335,7 @@ Use in text:
 - **Solution**: Run makeindex commands and recompile
 
 **Problem**: Figures not displaying
-- **Solution**: Check that image files are in the `Figure/` folder and paths are correct
+- **Solution**: Check that image files are in the `figures/` folder and paths are correct
 
 **Problem**: PDF has wrong page numbers
 - **Solution**: Compile multiple times (at least 3 times) to resolve all references
@@ -385,6 +385,10 @@ Improvements and suggestions are welcome! If you find issues or have ideas for e
 ## 📄 License
 
 This template is provided as-is for academic use. Feel free to modify and distribute it for educational purposes.
+
+## 🙏 Acknowledgments
+
+This template is based on a completed Master's thesis project and incorporates best practices from various academic institutions.
 
 ---
 

@@ -38,10 +38,10 @@ Open `config.tex` and update your information:
 
 ## Step 4: Add Your Figures
 
-1. Place images in the `Figure/` folder
+1. Place images in the `figures/` folder
 2. Reference them in your chapters:
    ```latex
-   \includegraphics[width=0.8\linewidth]{Figure/your_image.png}
+   \includegraphics[width=0.8\linewidth]{figures/your_image.png}
    ```
 
 ## Step 5: Compile Your Thesis
