@@ -1,0 +1,251 @@
+% Main Thesis File: This is the main file and it connects all the different parts of the thesis and compiles it into a single outcome file.
+
+\documentclass[onecolumn, 12 pt, doublespace, fullpage, a4paper, twoside]{report}
+\renewcommand{\baselinestretch}{1.667} % baseline stretch 1.5 value:1.25, 2 value: 1.667 
+
+% Packages
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[cmex10]{amsmath}
+\usepackage{adjustbox} 
+\usepackage{arabtex} 
+\usepackage{academicons}
+\usepackage{breakcites} 
+\usepackage{color}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{etoolbox}
+\usepackage{emptypage}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{graphics}
+%\usepackage{hyperref} % if you want to highlight the links
+\usepackage[hidelinks]{hyperref}
+\usepackage{latexsym,amsfonts}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{lscape} 
+\usepackage{lipsum}
+\usepackage{multirow}             
+\usepackage{pdfpages}
+\usepackage[figuresright]{rotating} 
+\usepackage{sectsty}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{textcomp}
+\usepackage{utf8} 
+\usepackage{url} 
+\usepackage{wrapfig} 
+\usepackage{wasysym} 
+\usepackage{xcolor}
+\usepackage{xurl}% for url in bibliography
+
+\usepackage{titlesec}
+
+% You can define your most used synonyms/acronyms
+% Example: \def\MYUNIVERSITY {My University Name}
+\def\dg{$^\circ$}		 % for degree celsius
+\def\2{$^2$}			 % for raised to power 2
+\def\3{$^3$}			 % for raised to power 3
+\def\-2{$^{-2}$}		 % for raised to power -2
+\def\-3{$^{-3}$}		 % for raised to power -3
+\def\-1{$^{-1}$}		 % for raised to power -1
+
+% Changing chapters' headings and subheadings to size 14
+\chapterfont{\fontsize{14}{15}\selectfont}   % font size and baseline stretch
+\sectionfont{\fontsize{14}{15}\selectfont}
+\subsectionfont{\fontsize{14}{15}\selectfont}
+\subsubsectionfont{\fontsize{14}{15}\selectfont}
+
+       
+\pagestyle{fancy} % adds a line at the top of every page, except title-page
+\fancyfoot{} % for header and footer
+\fancyfoot[CO,CE]{\thepage}    % center odd and even page number
+\fancyhead{} 
+\fancyhead[LE]{\bfseries \nouppercase{\leftmark}}
+\fancyhead[RO]{\bfseries \nouppercase{\rightmark}}
+
+\usepackage{blindtext}% only for dummy text
+
+%centering the page numbers with text body
+\fancyheadoffset[L]{0.01mm}
+\fancyheadoffset[R]{0.01mm}
+\renewcommand{\headrulewidth}{0.00001mm}
+
+
+%The following code changes the empty vertical space above a new chapter title. It sets it from 50pt to 20pt
+\makeatletter
+\patchcmd{\@makechapterhead}{50\p@}{20pt}{}{}
+\patchcmd{\@makeschapterhead}{50\p@}{20pt}{}{}
+\makeatother
+%end of modification
+
+
+% ### Nomenclature, List of Abbreviations and List of Symbols 
+   \usepackage{ifthen,xkeyval,xfor,amsgen}
+   \usepackage[acronym,toc, nogroupskip]{glossaries}
+   \newglossary[slg]{symbols}{syi}{sbl}{List of Symbols}
+ 
+   \makeglossaries
+   
+   \include{Lists}
+   % Run the following three lines in the command line to get the lists
+%makeindex -s Thesis.ist -t Thesis.alg -o Thesis.acr Thesis.acn
+%makeindex -s Thesis.ist -t Thesis.slg -o Thesis.syi Thesis.sbl
+%makeindex -s Thesis.ist -t Thesis.glg -o Thesis.gls Thesis.glo
+
+% ### End of addition
+
+
+% Modified commands
+\newcommand{\Tab}{\hspace{2ex}}
+\usepackage[lmargin=25mm, rmargin=25mm, tmargin=25mm, bmargin=25mm, headsep=15pt]{geometry}
+\addtolength{\skip\footins}{1pc}
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}[1]{{}}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand\bibname{\centering BIBLIOGRAPHY}
+
+% No extra line spacing before paragraph
+\setlength{\parskip}{0pt} 
+
+
+\begin{document}
+
+% $$$$$$$$$$$$$$$$$  Start of Thesis Front matter   $$$$$$$$$$$$$$
+
+\thispagestyle{empty}
+\addvspace{5mm}  % vertical space until length
+
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+% Insert PDF cover page (if you have one)
+% Uncomment and modify the following lines:
+% \setcounter{page}{1}
+% \pagenumbering{Roman}
+% \includepdf[pages=-]{Frontespizio.pdf}
+
+% OR create a simple title page:
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\LARGE\bfseries Your Thesis Title Here\par}
+\vspace{1.5cm}
+{\Large Your Name\par}
+\vspace{1cm}
+{\large A thesis submitted in partial fulfillment\\
+of the requirements for the degree of\\
+Master of Science\par}
+\vspace{1cm}
+{\large Department Name\\
+University Name\par}
+\vspace{1cm}
+{\large Month Year\par}
+\end{titlepage}
+
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+\shipout\null  % blank page
+
+
+%$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+\chaptertitlefont{\fontsize{14}{15}\selectfont\centering}  
+
+\renewcommand{\headrulewidth}{0mm}
+\fancyhead{}
+\setcounter{page}{3}
+\include{Abstract}  % include your abstract file
+\shipout\null
+\setcounter{page}{5}
+\include{Abstract_IT}  % include your Italian abstract file (optional)
+\shipout\null
+
+% Uncomment if you want to include acknowledgments
+%\include{Acknowledgment}
+
+\setcounter{page}{7}
+\begin{onehalfspacing}%To make the table of contents, figures, and tables single spaced
+
+\tableofcontents
+
+\printglossary[type=\acronymtype,style=long3col, title=\centerline{LIST OF ABBREVIATIONS}, toctitle=List of Abbreviations, nonumberlist=true] 
+
+\printglossary[type=symbols,style=long3col, title=\centerline{LIST OF SYMBOLS}, toctitle=List of Symbols, nonumberlist=true]
+
+% adding list of figures
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\renewcommand*\listfigurename{List of Figures}
+\listoffigures
+
+% adding list of tables
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\renewcommand*\listtablename{List of Tables}
+\listoftables
+\cleardoublepage
+
+\end{onehalfspacing}
+
+% $$$$$$$$$$$$$$$$$  Thesis front matter ends   $$$$$$$$$$$$$$
+
+% $$$$$$$$$$$$$$$$$  include your separate chapters   $$$$$$$$$$$$$$
+\renewcommand{\headrulewidth}{0.00001mm}
+\fancyhead{} 
+\fancyhead[RO]{\bfseries \nouppercase{\leftmark}}
+\fancyhead[LE]{\bfseries \nouppercase{\rightmark}}
+
+\renewcommand{\baselinestretch}{1.667} 
+% Remove the centering of chapter name.
+\chaptertitlefont{\fontsize{14}{15}\selectfont}
+
+\pagenumbering{arabic}
+\include{Chapter_1}
+\include{Chapter_2}
+\include{Chapter_3}
+% Add more chapters as needed
+
+\include{Conclusion}
+
+\pagenumbering{Roman}
+\setcounter{page}{14}
+
+% $$$$$$$$$$$$$$$$$  Reference style Ends  $$$$$$$$$$$$$$
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot{}
+\fancyfoot[CO,CE]{\thepage}
+\fancyhead{}  
+
+\newpage
+\shipout\null % blank page before bibliography
+\include{Bibliography.tex}  
+
+% $$$$$$$$$$$$$$$$$  include Appendices   $$$$$$$$$$$$$$
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot{}
+\fancyfoot[CO,CE]{\thepage}
+\fancyhead{}  
+
+\appendix
+		\newpage
+		\begingroup
+			\let\clearpage\relax
+			\begin{center}
+			\vspace*{2\baselineskip}
+			{ \textbf{{\large Appendices}}} 
+            \phantomsection
+			\addcontentsline{toc}{chapter}{Appendices} 
+			\end{center}
+            \include{Appendix_A}
+            \include{Appendix_B}
+            % Add more appendices as needed
+		\endgroup
+% $$$$$$$$$$$$$$$$$  Appendix ends  $$$$$$$$$$$$$$
+
+\end{document}
+
+% Made with Bob

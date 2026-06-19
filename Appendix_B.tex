@@ -1,0 +1,73 @@
+% Appendix B File
+
+\chapter{Code and Algorithms}
+\label{appendix_b}
+
+
+This appendix contains code listings, algorithms, and technical implementation details.
+
+\section{Algorithm Pseudocode}
+
+You can include algorithm pseudocode here:
+
+\begin{verbatim}
+Algorithm: Example Algorithm
+Input: data array, threshold value
+Output: processed results
+
+1. Initialize result array
+2. For each element in data:
+   a. If element > threshold:
+      - Add element to result
+   b. Else:
+      - Skip element
+3. Return result
+\end{verbatim}
+
+\section{Code Listings}
+
+Include relevant code snippets that support your research:
+
+\subsection{Python Example}
+
+\begin{lstlisting}[language=Python, caption=Example Python code]
+import numpy as np
+import matplotlib.pyplot as plt
+
+def process_data(data, threshold):
+    """
+    Process data based on threshold
+    """
+    result = []
+    for value in data:
+        if value > threshold:
+            result.append(value)
+    return np.array(result)
+
+# Example usage
+data = np.random.randn(100)
+processed = process_data(data, 0.5)
+\end{lstlisting}
+
+\subsection{R Example}
+
+\begin{lstlisting}[language=R, caption=Example R code]
+# Load required libraries
+library(ggplot2)
+
+# Process data
+process_data <- function(data, threshold) {
+  result <- data[data > threshold]
+  return(result)
+}
+
+# Example usage
+data <- rnorm(100)
+processed <- process_data(data, 0.5)
+\end{lstlisting}
+
+\section{Configuration Files}
+
+Include any configuration files or parameter settings used in your research.
+
+% Made with Bob
