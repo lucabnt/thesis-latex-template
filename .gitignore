@@ -1,0 +1,73 @@
+# LaTeX compilation artifacts in output directory
+output/*.aux
+output/*.lof
+output/*.log
+output/*.lot
+output/*.fls
+output/*.out
+output/*.toc
+output/*.fmt
+output/*.fot
+output/*.cb
+output/*.cb2
+output/.*.lb
+output/*.dvi
+output/*.xdv
+output/*-converted-to.*
+output/*.bbl
+output/*.bcf
+output/*.blg
+output/*-blx.aux
+output/*-blx.bib
+output/*.run.xml
+output/*.fdb_latexmk
+output/*.synctex
+output/*.synctex(busy)
+output/*.synctex.gz
+output/*.synctex.gz(busy)
+output/*.pdfsync
+output/*.alg
+output/*.loa
+output/*.acn
+output/*.acr
+output/*.glg
+output/*.glo
+output/*.gls
+output/*.glsdefs
+output/*.lzo
+output/*.lzs
+output/*.slg
+output/*.slo
+output/*.sls
+output/*.ist
+output/*.xdy
+output/*.tdo
+output/*.nav
+output/*.snm
+output/*.vrb
+output/*.syi
+output/*.sbl
+
+# Keep the final PDF (optional - uncomment if you want to version control the PDF)
+# !output/Thesis.pdf
+
+# Keep the README
+!output/README.txt
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Made with Bob
