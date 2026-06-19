@@ -36,5 +36,3 @@ echo "Step 7/7: Compilation complete!"
 echo "========================================"
 echo "Output file: Thesis.pdf"
 echo "========================================"
-
-# Made with Bob

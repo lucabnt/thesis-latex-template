@@ -38,5 +38,3 @@ echo Output file: Thesis.pdf
 echo ========================================
 
 pause
-
-@REM Made with Bob

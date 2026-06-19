@@ -2,6 +2,17 @@
 
 A comprehensive LaTeX template for Master's and PhD theses, based on a completed thesis project. This template provides a professional structure with all necessary components for academic thesis writing.
 
+## ⚠️ Disclaimer
+
+This template was automatically generated from a completed thesis project and has not been fully tested for compilation. While the structure and formatting are based on a successfully defended thesis, **complete functionality is not guaranteed**. Users should:
+
+- Test compilation on their own system
+- Verify that all LaTeX packages are properly installed
+- Check that the template meets their institution's specific requirements
+- Report any issues or contribute improvements
+
+**Use at your own discretion.** This is provided as-is without warranty.
+
 ## 📚 Documentation Files
 
 This template includes multiple documentation files to help you get started:
@@ -371,3 +382,5 @@ For questions or issues:
 ---
 
 **Good luck with your thesis! 🎓**
+
+
