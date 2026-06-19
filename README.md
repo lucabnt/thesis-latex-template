@@ -380,14 +380,6 @@ Improvements and suggestions are welcome! If you find issues or have ideas for e
 2. Test your changes thoroughly
 3. Submit with clear description of modifications
 
-## 📄 License
-
-This template is provided as-is for academic use. Feel free to modify and distribute it for educational purposes.
-
-## 🙏 Acknowledgments
-
-This template is based on a completed Master's thesis project and incorporates best practices from various academic institutions.
-
 ---
 
 ## 📞 Support
