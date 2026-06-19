@@ -32,8 +32,6 @@ This template is derived from a LaTeX thesis template that appears to have origi
 
 **Note:** All specific thesis content has been removed and replaced with generic academic examples. The template structure and LaTeX configuration are derived from the original CC BY 4.0 licensed work.
 
----
-
 ## 📚 Documentation Files
 
 This template includes multiple documentation files to help you get started:
