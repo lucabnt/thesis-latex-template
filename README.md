@@ -88,6 +88,58 @@ Thesis-Template/
     └── README.txt
 ```
 
+## 📄 Frontispiece Options
+
+Many universities provide an official frontispiece (cover page) in Word format. This template supports two approaches:
+
+### Option 1: Using University-Provided Word Frontispiece (Recommended)
+
+If your university provides an official Word document for the frontispiece:
+
+1. **Fill out the Word document** with your thesis information
+2. **Convert to PDF**:
+   - In Word: File → Save As → PDF
+   - Or use online converters (ensure quality settings are high)
+3. **Save the PDF** as `Frontespizio.pdf` in your thesis directory
+4. **Edit `Thesis.tex`** (around line 124):
+   ```latex
+   % OPTION 1: Use a PDF frontispiece provided by your university
+   \setcounter{page}{1}
+   \pagenumbering{Roman}
+   \includepdf[pages=-]{Frontespizio.pdf}
+   
+   % OPTION 2: Create a LaTeX title page (default)
+   % Comment out this section if using Option 1
+   % \begin{titlepage}
+   % ...
+   % \end{titlepage}
+   ```
+
+**Advantages:**
+- Ensures compliance with university formatting requirements
+- No need to recreate complex layouts in LaTeX
+- Official logos and styling are preserved
+
+### Option 2: LaTeX Title Page (Default)
+
+Use the built-in LaTeX title page (already configured in the template):
+
+```latex
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\LARGE\bfseries Your Thesis Title Here\par}
+\vspace{1.5cm}
+{\Large Your Name\par}
+...
+\end{titlepage}
+```
+
+Customize the content directly in [`Thesis.tex`](Thesis.tex:131-146) or use variables from [`config.tex`](config.tex).
+
+**Note:** The frontispiece is now properly centered with the rest of the document. If you experience alignment issues, ensure you're not adding extra spacing commands before the titlepage environment.
+
+
 ## 🔧 Requirements
 
 ### Essential Software

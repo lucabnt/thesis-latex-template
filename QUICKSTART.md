@@ -29,14 +29,25 @@ Open `config.tex` and update your information:
 \newcommand{\thesisDate}{June 2024}
 ```
 
-## Step 3: Edit Your Content
+## Step 3: Choose Your Frontispiece Option
+
+### Option A: University-Provided Word Frontispiece (Recommended)
+If your university provides an official Word frontispiece:
+1. Fill out the Word document
+2. Save as PDF: `Frontespizio.pdf`
+3. In `Thesis.tex` (line ~124), uncomment the PDF option and comment out the LaTeX titlepage
+
+### Option B: Use LaTeX Title Page (Default)
+The template includes a centered LaTeX title page. Customize it in `Thesis.tex` (line ~131).
+
+## Step 4: Edit Your Content
 
 1. **Abstract**: Edit `Abstract.tex` with your thesis summary
 2. **Chapters**: Edit `Chapter_1.tex`, `Chapter_2.tex`, `Chapter_3.tex`
 3. **Conclusion**: Edit `Conclusion.tex`
 4. **Bibliography**: Edit `Bibliography.tex` or `References.bib`
 
-## Step 4: Add Your Figures
+## Step 5: Add Your Figures
 
 1. Place images in the `figures/` folder
 2. Reference them in your chapters:
@@ -44,7 +55,7 @@ Open `config.tex` and update your information:
    \includegraphics[width=0.8\linewidth]{figures/your_image.png}
    ```
 
-## Step 5: Compile Your Thesis
+## Step 6: Compile Your Thesis
 
 ### Easy Way (Recommended)
 
