@@ -144,12 +144,49 @@ Customize the content directly in [`Thesis.tex`](Thesis.tex:131-146) or use vari
 
 ### Essential Software
 
-1. **LaTeX Distribution**
-   - **Windows**: [MiKTeX](https://miktex.org/) or [TeX Live](https://www.tug.org/texlive/)
-   - **Mac**: [MacTeX](https://www.tug.org/mactex/)
-   - **Linux**: TeX Live (usually available in package manager)
+1. **LaTeX Distribution** (Required)
 
-2. **LaTeX Editor** (recommended)
+   The compilation scripts will automatically check if LaTeX is installed and provide installation instructions if needed.
+
+   **Windows:**
+   - **[MiKTeX](https://miktex.org/)** (Recommended)
+     - Easier to use with automatic package installation
+     - Smaller initial download (~200MB)
+     - Download: https://miktex.org/download
+   - **[TeX Live](https://www.tug.org/texlive/windows.html)** (Alternative)
+     - More complete distribution
+     - Larger download (~4GB)
+
+   **macOS:**
+   - **[MacTeX](https://www.tug.org/mactex/)** (Full distribution, ~4GB)
+     ```bash
+     # Or install via Homebrew:
+     brew install --cask mactex
+     ```
+
+   **Linux:**
+   
+   Ubuntu/Debian:
+   ```bash
+   # Full installation (recommended, ~4GB)
+   sudo apt-get update
+   sudo apt-get install texlive-full
+   
+   # OR minimal installation (faster, ~500MB)
+   sudo apt-get install texlive-latex-base texlive-latex-extra
+   ```
+   
+   Fedora/RHEL:
+   ```bash
+   sudo dnf install texlive-scheme-full
+   ```
+   
+   Arch Linux:
+   ```bash
+   sudo pacman -S texlive-most
+   ```
+
+2. **LaTeX Editor** (Optional but recommended)
    - [TeXstudio](https://www.texstudio.org/) (cross-platform)
    - [Overleaf](https://www.overleaf.com/) (online)
    - [Visual Studio Code](https://code.visualstudio.com/) with LaTeX Workshop extension
@@ -172,6 +209,12 @@ The template uses the following packages (usually included in standard distribut
 
 ### Method 1: Using Compilation Scripts (Recommended)
 
+The compilation scripts automatically:
+- Check if LaTeX is installed
+- Create the `output/` directory
+- Compile the thesis with all necessary steps
+- Generate the final PDF in `output/Thesis.pdf`
+
 **Windows:**
 ```bash
 # Double-click compile.bat or run in command prompt:
@@ -187,25 +230,36 @@ chmod +x compile.sh
 ./compile.sh
 ```
 
+**Note:** If LaTeX is not installed, the scripts will display detailed installation instructions and exit. After installing LaTeX, restart your terminal and run the script again.
+
 ### Method 2: Manual Compilation
 
+If you prefer to compile manually or need to customize the compilation process:
+
 ```bash
+# Create output directory
+mkdir -p output  # Linux/Mac
+# or
+md output        # Windows
+
 # Step 1: First LaTeX compilation
-pdflatex Thesis.tex
+pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
 
 # Step 2: Generate glossaries
-makeindex -s Thesis.ist -t Thesis.alg -o Thesis.acr Thesis.acn
-makeindex -s Thesis.ist -t Thesis.slg -o Thesis.syi Thesis.sbl
-makeindex -s Thesis.ist -t Thesis.glg -o Thesis.gls Thesis.glo
+makeindex -s Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
+makeindex -s Thesis.ist -t output/Thesis.slg -o output/Thesis.syi output/Thesis.sbl
+makeindex -s Thesis.ist -t output/Thesis.glg -o output/Thesis.gls output/Thesis.glo
 
 # Step 3: Generate bibliography (if using BibTeX)
-bibtex Thesis
+bibtex output/Thesis
 
 # Step 4-6: Additional LaTeX compilations
-pdflatex Thesis.tex
-pdflatex Thesis.tex
-pdflatex Thesis.tex
+pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
+pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
+pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
 ```
+
+The final PDF will be located at `output/Thesis.pdf`.
 
 ### Method 3: Using LaTeX Editor
 
@@ -361,20 +415,26 @@ Use in text:
 
 ### Common Issues
 
+**Problem**: "pdflatex: command not found" or "comando non trovato"
+- **Solution**: LaTeX is not installed. Follow the installation instructions in the [Requirements](#requirements) section. The compilation scripts will automatically detect this and provide specific instructions for your operating system.
+
 **Problem**: "File not found" errors
 - **Solution**: Ensure all `.tex` files are in the same directory as `Thesis.tex`
 
 **Problem**: Bibliography not appearing
-- **Solution**: Run the full compilation sequence (see [Compilation](#compilation))
+- **Solution**: Run the full compilation sequence (use the compilation scripts or see [Manual Compilation](#method-2-manual-compilation))
 
 **Problem**: Glossaries not showing
-- **Solution**: Run makeindex commands and recompile
+- **Solution**: Run makeindex commands and recompile (the compilation scripts handle this automatically)
 
 **Problem**: Figures not displaying
 - **Solution**: Check that image files are in the `figures/` folder and paths are correct
 
 **Problem**: PDF has wrong page numbers
-- **Solution**: Compile multiple times (at least 3 times) to resolve all references
+- **Solution**: Compile multiple times (at least 3 times) to resolve all references. The compilation scripts run 4 passes automatically.
+
+**Problem**: Output files in wrong location
+- **Solution**: The template now outputs all files to the `output/` directory. Look for `output/Thesis.pdf` instead of `Thesis.pdf` in the root directory.
 
 ### Getting Help
 

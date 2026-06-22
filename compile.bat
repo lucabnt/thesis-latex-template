@@ -3,6 +3,35 @@ REM Compilation script for Windows
 REM This script compiles the thesis with all necessary steps
 
 echo ========================================
+echo Checking LaTeX installation...
+echo ========================================
+
+REM Check if pdflatex is available
+where pdflatex >nul 2>nul
+if %ERRORLEVEL% NEQ 0 (
+    echo ERROR: pdflatex is not installed or not in PATH
+    echo.
+    echo Please install LaTeX on your system:
+    echo.
+    echo Option 1 - MiKTeX ^(Recommended for Windows^):
+    echo   Download from: https://miktex.org/download
+    echo   - Easier to use, automatic package installation
+    echo   - Smaller initial download
+    echo.
+    echo Option 2 - TeX Live:
+    echo   Download from: https://www.tug.org/texlive/windows.html
+    echo   - More complete distribution
+    echo   - Larger download ^(~4GB^)
+    echo.
+    echo After installation, restart your terminal and try again.
+    echo ========================================
+    pause
+    exit /b 1
+)
+
+echo All required LaTeX tools are installed
+echo.
+echo ========================================
 echo Compiling Thesis...
 echo ========================================
 

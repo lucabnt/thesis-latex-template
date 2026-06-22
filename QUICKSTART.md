@@ -4,16 +4,30 @@ This guide will help you get started with the thesis template in 5 minutes.
 
 ## Step 1: Install LaTeX (if not already installed)
 
+**Note:** The compilation scripts will automatically check if LaTeX is installed and provide detailed installation instructions if needed.
+
 ### Windows
-Download and install [MiKTeX](https://miktex.org/download)
+- **[MiKTeX](https://miktex.org/download)** (Recommended) - Easier, automatic package installation
+- **[TeX Live](https://www.tug.org/texlive/windows.html)** (Alternative) - More complete
 
 ### Mac
-Download and install [MacTeX](https://www.tug.org/mactex/mactex-download.html)
+- **[MacTeX](https://www.tug.org/mactex/mactex-download.html)** - Full distribution
+- Or via Homebrew: `brew install --cask mactex`
 
 ### Linux
 ```bash
-sudo apt-get install texlive-full  # Ubuntu/Debian
-sudo dnf install texlive-scheme-full  # Fedora
+# Ubuntu/Debian - Full installation (recommended)
+sudo apt-get update
+sudo apt-get install texlive-full
+
+# OR minimal installation (faster, ~500MB)
+sudo apt-get install texlive-latex-base texlive-latex-extra
+
+# Fedora/RHEL
+sudo dnf install texlive-scheme-full
+
+# Arch Linux
+sudo pacman -S texlive-most
 ```
 
 ## Step 2: Customize Your Thesis
@@ -59,32 +73,46 @@ The template includes a centered LaTeX title page. Customize it in `Thesis.tex` 
 
 ### Easy Way (Recommended)
 
+The compilation scripts will:
+- ✅ Check if LaTeX is installed (and show instructions if not)
+- ✅ Create the `output/` directory automatically
+- ✅ Compile with all necessary steps
+- ✅ Generate `output/Thesis.pdf`
+
 **Windows**: Double-click `compile.bat`
 
-**Linux/Mac**: 
+**Linux/Mac**:
 ```bash
 chmod +x compile.sh
 ./compile.sh
 ```
 
+**Important:** If you see "pdflatex: command not found", LaTeX is not installed. The script will show you exactly how to install it for your system.
+
 ### Using LaTeX Editor
 
 Open `Thesis.tex` in your LaTeX editor and click "Build" or "Compile"
 
-## Step 6: Check Your Output
+## Step 7: Check Your Output
 
-Your compiled thesis will be: `Thesis.pdf`
+Your compiled thesis will be in: **`output/Thesis.pdf`**
 
 ## Common First-Time Issues
 
+**Problem**: "pdflatex: command not found" or "comando non trovato"
+- **Solution**: LaTeX is not installed. Run the compilation script - it will show you exactly how to install LaTeX for your operating system.
+
 **Problem**: Missing packages
 - **Solution**: MiKTeX will prompt to install them automatically. Click "Yes"
+
+**Problem**: Can't find Thesis.pdf
+- **Solution**: The PDF is now in the `output/` folder. Look for `output/Thesis.pdf`
 
 **Problem**: Compilation errors
 - **Solution**: Check that all `.tex` files are in the same folder
 
 **Problem**: Bibliography not showing
-- **Solution**: Run the compilation script (it compiles multiple times)
+- **Solution**: Run the compilation script (it compiles multiple times automatically)
 
 ## Next Steps
 

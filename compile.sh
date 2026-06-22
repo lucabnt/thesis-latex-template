@@ -2,6 +2,60 @@
 # Compilation script for Linux/Mac
 # This script compiles the thesis with all necessary steps
 
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# Check for required LaTeX tools
+echo "========================================"
+echo "Checking LaTeX installation..."
+echo "========================================"
+
+MISSING_TOOLS=()
+
+if ! command_exists pdflatex; then
+    MISSING_TOOLS+=("pdflatex")
+fi
+
+if ! command_exists makeindex; then
+    MISSING_TOOLS+=("makeindex")
+fi
+
+if ! command_exists bibtex; then
+    MISSING_TOOLS+=("bibtex")
+fi
+
+if [ ${#MISSING_TOOLS[@]} -ne 0 ]; then
+    echo "❌ ERROR: The following LaTeX tools are not installed:"
+    for tool in "${MISSING_TOOLS[@]}"; do
+        echo "   - $tool"
+    done
+    echo ""
+    echo "Please install LaTeX on your system:"
+    echo ""
+    echo "Ubuntu/Debian:"
+    echo "  sudo apt-get update"
+    echo "  sudo apt-get install texlive-full"
+    echo ""
+    echo "Fedora/RHEL:"
+    echo "  sudo dnf install texlive-scheme-full"
+    echo ""
+    echo "Arch Linux:"
+    echo "  sudo pacman -S texlive-most"
+    echo ""
+    echo "macOS (with Homebrew):"
+    echo "  brew install --cask mactex"
+    echo ""
+    echo "For a minimal installation (faster, ~500MB):"
+    echo "  Ubuntu/Debian: sudo apt-get install texlive-latex-base texlive-latex-extra"
+    echo ""
+    echo "========================================"
+    exit 1
+fi
+
+echo "✓ All required LaTeX tools are installed"
+echo ""
 echo "========================================"
 echo "Compiling Thesis..."
 echo "========================================"

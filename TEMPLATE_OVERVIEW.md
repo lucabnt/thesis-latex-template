@@ -99,9 +99,9 @@ This thesis template is a complete, production-ready LaTeX project based on a su
 
 ### For Beginners
 1. Read **QUICKSTART.md** (5-minute setup)
-2. Install LaTeX distribution
+2. Install LaTeX distribution (scripts will check and guide you)
 3. Edit config.tex with your information
-4. Run compilation script
+4. Run compilation script (creates output in `output/` folder)
 5. Start writing!
 
 ### For Experienced Users
@@ -110,6 +110,8 @@ This thesis template is a complete, production-ready LaTeX project based on a su
 3. Set up your preferred LaTeX editor
 4. Configure bibliography style
 5. Begin content creation
+
+**Note:** The compilation scripts now automatically check if LaTeX is installed and provide detailed installation instructions if needed. All output files are generated in the `output/` directory to keep the project root clean.
 
 ## 📝 Customization Points
 
@@ -132,7 +134,10 @@ This thesis template is a complete, production-ready LaTeX project based on a su
 ## 🔧 Technical Requirements
 
 ### Minimum Requirements
-- LaTeX distribution (MiKTeX, TeX Live, or MacTeX)
+- **LaTeX distribution** (MiKTeX, TeX Live, or MacTeX)
+  - The compilation scripts will check if installed
+  - Provide installation instructions if missing
+  - See README.md for detailed installation guide
 - PDF viewer
 - Text editor
 
@@ -140,6 +145,13 @@ This thesis template is a complete, production-ready LaTeX project based on a su
 - LaTeX editor (TeXstudio, Overleaf, VS Code with LaTeX Workshop)
 - Git for version control
 - Reference manager (Zotero, Mendeley) for BibTeX
+
+### Installation Verification
+Run the compilation script to verify your LaTeX installation:
+- **Windows**: `compile.bat`
+- **Linux/Mac**: `./compile.sh`
+
+If LaTeX is not installed, the script will display platform-specific installation instructions.
 
 ### Required LaTeX Packages
 All standard packages included in full LaTeX distributions:
@@ -200,19 +212,35 @@ The template preserves:
 ```
 Run compile.bat (Windows) or compile.sh (Linux/Mac)
 ↓
-7 automated steps:
-1. pdflatex (first pass)
-2. makeindex (glossaries)
-3. bibtex (bibliography)
-4. pdflatex (second pass)
-5. pdflatex (third pass)
-6. pdflatex (fourth pass)
-7. Output: Thesis.pdf
+Step 0: Check LaTeX installation
+  - Verifies pdflatex, makeindex, bibtex are available
+  - Shows installation instructions if missing
+  - Exits if tools not found
+↓
+Step 1: Create output directory
+↓
+7 compilation steps:
+1. pdflatex (first pass) → output/
+2. makeindex (glossaries) → output/
+3. bibtex (bibliography) → output/
+4. pdflatex (second pass) → output/
+5. pdflatex (third pass) → output/
+6. pdflatex (fourth pass) → output/
+7. Final output: output/Thesis.pdf
 ```
 
-### Manual
-```
-pdflatex → makeindex → bibtex → pdflatex (3x)
+### Manual Compilation
+```bash
+# Create output directory
+mkdir -p output
+
+# Compile with output directory
+pdflatex -output-directory=output Thesis.tex
+makeindex -s Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
+bibtex output/Thesis
+pdflatex -output-directory=output Thesis.tex (3x)
+
+# Result: output/Thesis.pdf
 ```
 
 ## 📦 File Size and Performance
@@ -277,11 +305,13 @@ git branch -M main
 - ✅ Cross-platform compatibility
 
 ### Testing Checklist
-- [ ] LaTeX compilation (requires LaTeX installation)
+- [x] LaTeX installation check in scripts
+- [x] Output directory creation
 - [x] File structure verification
 - [x] Documentation completeness
 - [x] Example code validity
 - [x] Cross-platform script compatibility
+- [x] Installation instructions for all platforms
 
 ## 🎯 Use Cases
 
