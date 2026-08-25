@@ -75,9 +75,15 @@
 % Add your frequently used commands here
 % Example: \newcommand{\mycommand}{definition}
 
-% Degree symbols and superscripts
-\def\dg{$^\circ$}
-\def\2{$^2$}
-\def\3{$^3$}
+% Degree symbol and exponents.
+% Defined with \newcommand rather than \def: if the name is already taken
+% LaTeX raises an error instead of silently overwriting an existing command.
+% \ensuremath makes them work both inside and outside math mode.
+\newcommand{\dg}{\ensuremath{^\circ}}        % 25\dg C
+\newcommand{\pow}[1]{\ensuremath{^{#1}}}     % m\pow{2}, s\pow{-1}, cm\pow{-3}
+
+% Note: do not name a shortcut \-, \2 or \3. Those are not free:
+% \- is LaTeX's discretionary hyphen (manual hyphenation), and \def would
+% overwrite it without warning.
 
 % Add more custom commands as needed

@@ -48,14 +48,9 @@
 \newif\ifusebibtex
 \ifdefstring{\useBibTeX}{true}{\usebibtextrue}{\usebibtexfalse}
 
-% You can define your most used synonyms/acronyms
-% Example: \def\MYUNIVERSITY {My University Name}
-\def\dg{$^\circ$}		 % for degree celsius
-\def\2{$^2$}			 % for raised to power 2
-\def\3{$^3$}			 % for raised to power 3
-\def\-2{$^{-2}$}		 % for raised to power -2
-\def\-3{$^{-3}$}		 % for raised to power -3
-\def\-1{$^{-1}$}		 % for raised to power -1
+% Shorthands and your own synonyms/acronyms are defined in config.tex,
+% which is \input at the top of this file. Keep them there so there is a
+% single place to look for them.
 
 % Changing chapters' headings and subheadings to size 14
 \chapterfont{\fontsize{\chapterFontSize}{15}\selectfont}   % font size and baseline stretch

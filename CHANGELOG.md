@@ -21,6 +21,11 @@ All notable changes to this thesis template will be documented in this file.
 - `\include{Lists}` in the preamble, `headheight` too small for `fancyhdr`,
   and two document class options that do not exist
 - `anotherauthor2022` was cited but absent from `References.bib`
+- `\def\-1/-2/-3` overwrote each other and destroyed `\-`, LaTeX's manual
+  hyphenation command; shorthands are now `\dg` and `\pow{...}`, declared once
+  in `config.tex` with `\newcommand` and `\ensuremath`
+- README offered the template under MIT terms, which no file granted; it is
+  CC BY 4.0, the same licence as the KAUST original
 
 ### Changed
 - `config.tex` is now read by `Thesis.tex` and actually drives the document;

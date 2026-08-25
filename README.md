@@ -30,7 +30,9 @@ This template is derived from a LaTeX thesis template that appears to have origi
 - Improved folder structure and organization
 - Added .gitignore and Git-ready configuration
 
-**This Modified Template License:** This derivative work maintains compatibility with CC BY 4.0 and can also be used under MIT License terms for maximum flexibility.
+**This Modified Template License:** [CC BY 4.0](LICENSE), the same licence as the
+original. You may use, adapt and redistribute it, including commercially, as long as
+you keep the attribution above. See [LICENSE](LICENSE) for the full text.
 
 **Note:** All specific thesis content has been removed and replaced with generic academic examples. The template structure and LaTeX configuration are derived from the original CC BY 4.0 licensed work.
 
