@@ -175,7 +175,8 @@ Customize the content directly in [`Thesis.tex`](Thesis.tex:131-146) or use vari
    # OR minimal installation (faster, ~1GB)
    # These four collections cover every package this template uses.
    sudo apt-get install texlive-latex-base texlive-latex-recommended \
-                        texlive-latex-extra texlive-fonts-recommended
+                        texlive-latex-extra texlive-fonts-recommended \
+                        lmodern
    ```
    
    Fedora/RHEL:

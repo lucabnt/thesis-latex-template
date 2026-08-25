@@ -50,7 +50,7 @@ if [ ${#MISSING_TOOLS[@]} -ne 0 ]; then
     echo "For a minimal installation (faster, ~1GB):"
     echo "  Ubuntu/Debian: sudo apt-get install texlive-latex-base \\"
     echo "                   texlive-latex-recommended texlive-latex-extra \\"
-    echo "                   texlive-fonts-recommended"
+    echo "                   texlive-fonts-recommended lmodern"
     echo ""
     echo "========================================"
     exit 1
