@@ -20,8 +20,10 @@ This guide will help you get started with the thesis template in 5 minutes.
 sudo apt-get update
 sudo apt-get install texlive-full
 
-# OR minimal installation (faster, ~500MB)
-sudo apt-get install texlive-latex-base texlive-latex-extra
+# OR minimal installation (faster, ~1GB)
+# These four collections cover every package this template uses.
+sudo apt-get install texlive-latex-base texlive-latex-recommended \
+                     texlive-latex-extra texlive-fonts-recommended
 
 # Fedora/RHEL
 sudo dnf install texlive-scheme-full
@@ -32,7 +34,11 @@ sudo pacman -S texlive-most
 
 ## Step 2: Customize Your Thesis
 
-Open `config.tex` and update your information:
+> **Note:** `config.tex` is **not** read by `Thesis.tex` yet, so editing it alone
+> changes nothing in the PDF. Set the real title page inside `Thesis.tex`
+> (Option 2 block) and use `config.tex` as your checklist of values.
+
+The information to fill in:
 
 ```latex
 \newcommand{\thesisTitle}{Your Thesis Title Here}
@@ -117,7 +123,7 @@ Your compiled thesis will be in: **`output/Thesis.pdf`**
 ## Next Steps
 
 1. Read the full [README.md](README.md) for detailed instructions
-2. Customize formatting in `config.tex`
+2. Customize formatting directly in `Thesis.tex` (see the note in Step 2)
 3. Add your abbreviations in `Lists.tex`
 4. Start writing your chapters!
 

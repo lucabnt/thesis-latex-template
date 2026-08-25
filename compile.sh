@@ -47,8 +47,10 @@ if [ ${#MISSING_TOOLS[@]} -ne 0 ]; then
     echo "macOS (with Homebrew):"
     echo "  brew install --cask mactex"
     echo ""
-    echo "For a minimal installation (faster, ~500MB):"
-    echo "  Ubuntu/Debian: sudo apt-get install texlive-latex-base texlive-latex-extra"
+    echo "For a minimal installation (faster, ~1GB):"
+    echo "  Ubuntu/Debian: sudo apt-get install texlive-latex-base \\"
+    echo "                   texlive-latex-recommended texlive-latex-extra \\"
+    echo "                   texlive-fonts-recommended"
     echo ""
     echo "========================================"
     exit 1
@@ -69,13 +71,17 @@ pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
 
 # Generate glossaries
 echo "Step 2/7: Generating glossaries..."
-makeindex -s Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
-makeindex -s Thesis.ist -t output/Thesis.slg -o output/Thesis.syi output/Thesis.sbl
-makeindex -s Thesis.ist -t output/Thesis.glg -o output/Thesis.gls output/Thesis.glo
+makeindex -s output/Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
+makeindex -s output/Thesis.ist -t output/Thesis.slg -o output/Thesis.syi output/Thesis.sbl
+makeindex -s output/Thesis.ist -t output/Thesis.glg -o output/Thesis.gls output/Thesis.glo
 
-# Generate bibliography (if using BibTeX)
+# Generate bibliography (only when the document actually uses BibTeX)
 echo "Step 3/7: Generating bibliography..."
-bibtex output/Thesis
+if grep -q "\\\\bibdata" output/Thesis.aux 2>/dev/null; then
+    bibtex output/Thesis
+else
+    echo "   Skipped: manual bibliography in use (no \\bibdata in Thesis.aux)."
+fi
 
 # Second compilation
 echo "Step 4/7: Running pdflatex (second pass)..."

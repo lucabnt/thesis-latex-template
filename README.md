@@ -172,8 +172,10 @@ Customize the content directly in [`Thesis.tex`](Thesis.tex:131-146) or use vari
    sudo apt-get update
    sudo apt-get install texlive-full
    
-   # OR minimal installation (faster, ~500MB)
-   sudo apt-get install texlive-latex-base texlive-latex-extra
+   # OR minimal installation (faster, ~1GB)
+   # These four collections cover every package this template uses.
+   sudo apt-get install texlive-latex-base texlive-latex-recommended \
+                        texlive-latex-extra texlive-fonts-recommended
    ```
    
    Fedora/RHEL:
@@ -246,9 +248,9 @@ md output        # Windows
 pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
 
 # Step 2: Generate glossaries
-makeindex -s Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
-makeindex -s Thesis.ist -t output/Thesis.slg -o output/Thesis.syi output/Thesis.sbl
-makeindex -s Thesis.ist -t output/Thesis.glg -o output/Thesis.gls output/Thesis.glo
+makeindex -s output/Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
+makeindex -s output/Thesis.ist -t output/Thesis.slg -o output/Thesis.syi output/Thesis.sbl
+makeindex -s output/Thesis.ist -t output/Thesis.glg -o output/Thesis.gls output/Thesis.glo
 
 # Step 3: Generate bibliography (if using BibTeX)
 bibtex output/Thesis
@@ -272,7 +274,12 @@ Most LaTeX editors have a "Build" or "Compile" button. Configure your editor to:
 
 ### Basic Information
 
-Edit the `config.tex` file to customize your thesis information:
+> **Note:** `config.tex` is **not** currently read by `Thesis.tex`. It is a
+> reference sheet of the values you are expected to set. Until it is wired in,
+> edit the title page and margins directly in `Thesis.tex`, and keep
+> `config.tex` in sync as documentation.
+
+The values to customize are:
 
 ```latex
 \newcommand{\thesisTitle}{Your Thesis Title Here}
@@ -374,7 +381,8 @@ Author, A. A. (Year). Title of work. Publisher.
    }
    ```
 
-2. In `Thesis.tex`, uncomment the BibTeX section (lines 249-257) and comment out:
+2. In `Thesis.tex`, find the `--- BIBLIOGRAPHY ---` block near the end of the file,
+   uncomment the two BibTeX lines and comment out:
    ```latex
    %\include{Bibliography.tex}
    ```

@@ -44,13 +44,18 @@ pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
 
 REM Generate glossaries
 echo Step 2/7: Generating glossaries...
-makeindex -s Thesis.ist -t output\Thesis.alg -o output\Thesis.acr output\Thesis.acn
-makeindex -s Thesis.ist -t output\Thesis.slg -o output\Thesis.syi output\Thesis.sbl
-makeindex -s Thesis.ist -t output\Thesis.glg -o output\Thesis.gls output\Thesis.glo
+makeindex -s output\Thesis.ist -t output\Thesis.alg -o output\Thesis.acr output\Thesis.acn
+makeindex -s output\Thesis.ist -t output\Thesis.slg -o output\Thesis.syi output\Thesis.sbl
+makeindex -s output\Thesis.ist -t output\Thesis.glg -o output\Thesis.gls output\Thesis.glo
 
-REM Generate bibliography (if using BibTeX)
+REM Generate bibliography (only when the document actually uses BibTeX)
 echo Step 3/7: Generating bibliography...
-bibtex output\Thesis
+findstr /C:"\bibdata" output\Thesis.aux >nul 2>nul
+if %ERRORLEVEL% EQU 0 (
+    bibtex output\Thesis
+) else (
+    echo    Skipped: manual bibliography in use.
+)
 
 REM Second compilation
 echo Step 4/7: Running pdflatex (second pass)...

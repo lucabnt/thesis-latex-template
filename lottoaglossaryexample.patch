@@ -1,0 +1,20 @@
+diff --git a/Chapter_1.tex b/Chapter_1.tex
+index 7dfa150..4a699c9 100644
+--- a/Chapter_1.tex
++++ b/Chapter_1.tex
+@@ -45,6 +45,15 @@ Chapter 2 presents the literature review and theoretical framework. Chapter 3 de
+ 
+ You can cite references using the \texttt{cite} command. For example, according to \cite{author2023}, this is an important finding. Multiple citations can be included like this \cite{author2023, anotherauthor2022}.
+ 
++\section{Example of Abbreviations and Symbols}
++
++Entries defined in \texttt{Lists.tex} only show up in the List of Abbreviations
++and the List of Symbols once they are actually used in the text. The first use of
++an acronym is expanded automatically, \gls{ai}, and every later use is short:
++\gls{ai}. The same applies to \gls{ml} and \gls{api}.
++
++Symbols behave the same way: \gls{symb:Pi} and \gls{symb:Lambda}.
++
+ \section{Example of Figures}
+ 
+ You can include figures in your thesis. Here's an example:

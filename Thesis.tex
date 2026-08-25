@@ -8,9 +8,6 @@
 \usepackage{amsthm}
 \usepackage[cmex10]{amsmath}
 \usepackage{adjustbox} 
-\usepackage{arabtex} 
-\usepackage{academicons}
-\usepackage{breakcites} 
 \usepackage{color}
 \usepackage{epsfig}
 \usepackage{epstopdf}
@@ -35,7 +32,7 @@
 \usepackage{setspace}
 \usepackage{subfigure}
 \usepackage{textcomp}
-\usepackage{utf8} 
+\usepackage[utf8]{inputenc} % UTF-8 input (default since LaTeX 2018, kept explicit)
 \usepackage{url} 
 \usepackage{wrapfig} 
 \usepackage{wasysym} 
@@ -90,7 +87,7 @@
  
    \makeglossaries
    
-   \include{Lists}
+   \input{Lists}
    % Run the following three lines in the command line to get the lists
 %makeindex -s Thesis.ist -t Thesis.alg -o Thesis.acr Thesis.acn
 %makeindex -s Thesis.ist -t Thesis.slg -o Thesis.syi Thesis.sbl
@@ -223,7 +220,16 @@ University Name\par}
 
 \newpage
 \shipout\null % blank page before bibliography
-\include{Bibliography.tex}  
+% --- BIBLIOGRAPHY -----------------------------------------------------
+% OPTION 1 (default): manual bibliography, edited by hand in Bibliography.tex
+\include{Bibliography}
+%
+% OPTION 2: BibTeX bibliography driven by References.bib.
+% To switch, comment out the \include{Bibliography} line above and
+% uncomment the two lines below, then recompile with compile.sh/compile.bat.
+%\bibliographystyle{plain}   % e.g. plain, abbrv, alpha, unsrt, apalike, IEEEtran
+%\bibliography{References}   % reads References.bib
+% ----------------------------------------------------------------------
 
 % $$$$$$$$$$$$$$$$$  include Appendices   $$$$$$$$$$$$$$
 \renewcommand{\headrulewidth}{0pt}

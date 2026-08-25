@@ -1,0 +1,245 @@
+diff --git a/Bibliography.tex b/Bibliography.tex
+index 67ef6a4..8e7bdab 100644
+--- a/Bibliography.tex
++++ b/Bibliography.tex
+@@ -46,8 +46,8 @@ Author, H. H. (Year). Title of the web page. Website Name, \textless \url{https:
+ 
+ \begin{enumerate}
+     \item Create a References.bib file with your references
+-    \item Uncomment the bibliography commands in Thesis.tex (lines 249-257)
+-    \item Comment out the \texttt{\textbackslash include\{Bibliography.tex\}} line
++    \item Uncomment the two BibTeX lines in the \texttt{--- BIBLIOGRAPHY ---} block near the end of Thesis.tex
++    \item Comment out the \texttt{\textbackslash include\{Bibliography\}} line
+     \item Run: pdflatex, bibtex, pdflatex, pdflatex
+ \end{enumerate}
+ 
+diff --git a/QUICKSTART.md b/QUICKSTART.md
+index 31461e4..dc320e6 100644
+--- a/QUICKSTART.md
++++ b/QUICKSTART.md
+@@ -20,8 +20,10 @@ This guide will help you get started with the thesis template in 5 minutes.
+ sudo apt-get update
+ sudo apt-get install texlive-full
+ 
+-# OR minimal installation (faster, ~500MB)
+-sudo apt-get install texlive-latex-base texlive-latex-extra
++# OR minimal installation (faster, ~1GB)
++# These four collections cover every package this template uses.
++sudo apt-get install texlive-latex-base texlive-latex-recommended \
++                     texlive-latex-extra texlive-fonts-recommended
+ 
+ # Fedora/RHEL
+ sudo dnf install texlive-scheme-full
+@@ -32,7 +34,11 @@ sudo pacman -S texlive-most
+ 
+ ## Step 2: Customize Your Thesis
+ 
+-Open `config.tex` and update your information:
++> **Note:** `config.tex` is **not** read by `Thesis.tex` yet, so editing it alone
++> changes nothing in the PDF. Set the real title page inside `Thesis.tex`
++> (Option 2 block) and use `config.tex` as your checklist of values.
++
++The information to fill in:
+ 
+ ```latex
+ \newcommand{\thesisTitle}{Your Thesis Title Here}
+@@ -117,7 +123,7 @@ Your compiled thesis will be in: **`output/Thesis.pdf`**
+ ## Next Steps
+ 
+ 1. Read the full [README.md](README.md) for detailed instructions
+-2. Customize formatting in `config.tex`
++2. Customize formatting directly in `Thesis.tex` (see the note in Step 2)
+ 3. Add your abbreviations in `Lists.tex`
+ 4. Start writing your chapters!
+ 
+diff --git a/README.md b/README.md
+index fb3e1d7..a69beff 100644
+--- a/README.md
++++ b/README.md
+@@ -172,8 +172,10 @@ Customize the content directly in [`Thesis.tex`](Thesis.tex:131-146) or use vari
+    sudo apt-get update
+    sudo apt-get install texlive-full
+    
+-   # OR minimal installation (faster, ~500MB)
+-   sudo apt-get install texlive-latex-base texlive-latex-extra
++   # OR minimal installation (faster, ~1GB)
++   # These four collections cover every package this template uses.
++   sudo apt-get install texlive-latex-base texlive-latex-recommended \
++                        texlive-latex-extra texlive-fonts-recommended
+    ```
+    
+    Fedora/RHEL:
+@@ -246,9 +248,9 @@ md output        # Windows
+ pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
+ 
+ # Step 2: Generate glossaries
+-makeindex -s Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
+-makeindex -s Thesis.ist -t output/Thesis.slg -o output/Thesis.syi output/Thesis.sbl
+-makeindex -s Thesis.ist -t output/Thesis.glg -o output/Thesis.gls output/Thesis.glo
++makeindex -s output/Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
++makeindex -s output/Thesis.ist -t output/Thesis.slg -o output/Thesis.syi output/Thesis.sbl
++makeindex -s output/Thesis.ist -t output/Thesis.glg -o output/Thesis.gls output/Thesis.glo
+ 
+ # Step 3: Generate bibliography (if using BibTeX)
+ bibtex output/Thesis
+@@ -272,7 +274,12 @@ Most LaTeX editors have a "Build" or "Compile" button. Configure your editor to:
+ 
+ ### Basic Information
+ 
+-Edit the `config.tex` file to customize your thesis information:
++> **Note:** `config.tex` is **not** currently read by `Thesis.tex`. It is a
++> reference sheet of the values you are expected to set. Until it is wired in,
++> edit the title page and margins directly in `Thesis.tex`, and keep
++> `config.tex` in sync as documentation.
++
++The values to customize are:
+ 
+ ```latex
+ \newcommand{\thesisTitle}{Your Thesis Title Here}
+@@ -374,7 +381,8 @@ Author, A. A. (Year). Title of work. Publisher.
+    }
+    ```
+ 
+-2. In `Thesis.tex`, uncomment the BibTeX section (lines 249-257) and comment out:
++2. In `Thesis.tex`, find the `--- BIBLIOGRAPHY ---` block near the end of the file,
++   uncomment the two BibTeX lines and comment out:
+    ```latex
+    %\include{Bibliography.tex}
+    ```
+diff --git a/Thesis.tex b/Thesis.tex
+index ca46f8e..588586b 100644
+--- a/Thesis.tex
++++ b/Thesis.tex
+@@ -8,9 +8,6 @@
+ \usepackage{amsthm}
+ \usepackage[cmex10]{amsmath}
+ \usepackage{adjustbox} 
+-\usepackage{arabtex} 
+-\usepackage{academicons}
+-\usepackage{breakcites} 
+ \usepackage{color}
+ \usepackage{epsfig}
+ \usepackage{epstopdf}
+@@ -35,7 +32,7 @@
+ \usepackage{setspace}
+ \usepackage{subfigure}
+ \usepackage{textcomp}
+-\usepackage{utf8} 
++\usepackage[utf8]{inputenc} % UTF-8 input (default since LaTeX 2018, kept explicit)
+ \usepackage{url} 
+ \usepackage{wrapfig} 
+ \usepackage{wasysym} 
+@@ -90,7 +87,7 @@
+  
+    \makeglossaries
+    
+-   \include{Lists}
++   \input{Lists}
+    % Run the following three lines in the command line to get the lists
+ %makeindex -s Thesis.ist -t Thesis.alg -o Thesis.acr Thesis.acn
+ %makeindex -s Thesis.ist -t Thesis.slg -o Thesis.syi Thesis.sbl
+@@ -223,7 +220,16 @@ University Name\par}
+ 
+ \newpage
+ \shipout\null % blank page before bibliography
+-\include{Bibliography.tex}  
++% --- BIBLIOGRAPHY -----------------------------------------------------
++% OPTION 1 (default): manual bibliography, edited by hand in Bibliography.tex
++\include{Bibliography}
++%
++% OPTION 2: BibTeX bibliography driven by References.bib.
++% To switch, comment out the \include{Bibliography} line above and
++% uncomment the two lines below, then recompile with compile.sh/compile.bat.
++%\bibliographystyle{plain}   % e.g. plain, abbrv, alpha, unsrt, apalike, IEEEtran
++%\bibliography{References}   % reads References.bib
++% ----------------------------------------------------------------------
+ 
+ % $$$$$$$$$$$$$$$$$  include Appendices   $$$$$$$$$$$$$$
+ \renewcommand{\headrulewidth}{0pt}
+diff --git a/compile.bat b/compile.bat
+index f6a6d5f..fcfa03e 100644
+--- a/compile.bat
++++ b/compile.bat
+@@ -44,13 +44,18 @@ pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
+ 
+ REM Generate glossaries
+ echo Step 2/7: Generating glossaries...
+-makeindex -s Thesis.ist -t output\Thesis.alg -o output\Thesis.acr output\Thesis.acn
+-makeindex -s Thesis.ist -t output\Thesis.slg -o output\Thesis.syi output\Thesis.sbl
+-makeindex -s Thesis.ist -t output\Thesis.glg -o output\Thesis.gls output\Thesis.glo
++makeindex -s output\Thesis.ist -t output\Thesis.alg -o output\Thesis.acr output\Thesis.acn
++makeindex -s output\Thesis.ist -t output\Thesis.slg -o output\Thesis.syi output\Thesis.sbl
++makeindex -s output\Thesis.ist -t output\Thesis.glg -o output\Thesis.gls output\Thesis.glo
+ 
+-REM Generate bibliography (if using BibTeX)
++REM Generate bibliography (only when the document actually uses BibTeX)
+ echo Step 3/7: Generating bibliography...
+-bibtex output\Thesis
++findstr /C:"\bibdata" output\Thesis.aux >nul 2>nul
++if %ERRORLEVEL% EQU 0 (
++    bibtex output\Thesis
++) else (
++    echo    Skipped: manual bibliography in use.
++)
+ 
+ REM Second compilation
+ echo Step 4/7: Running pdflatex (second pass)...
+diff --git a/compile.sh b/compile.sh
+old mode 100644
+new mode 100755
+index 3be30ab..0024112
+--- a/compile.sh
++++ b/compile.sh
+@@ -47,8 +47,10 @@ if [ ${#MISSING_TOOLS[@]} -ne 0 ]; then
+     echo "macOS (with Homebrew):"
+     echo "  brew install --cask mactex"
+     echo ""
+-    echo "For a minimal installation (faster, ~500MB):"
+-    echo "  Ubuntu/Debian: sudo apt-get install texlive-latex-base texlive-latex-extra"
++    echo "For a minimal installation (faster, ~1GB):"
++    echo "  Ubuntu/Debian: sudo apt-get install texlive-latex-base \\"
++    echo "                   texlive-latex-recommended texlive-latex-extra \\"
++    echo "                   texlive-fonts-recommended"
+     echo ""
+     echo "========================================"
+     exit 1
+@@ -69,13 +71,17 @@ pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
+ 
+ # Generate glossaries
+ echo "Step 2/7: Generating glossaries..."
+-makeindex -s Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
+-makeindex -s Thesis.ist -t output/Thesis.slg -o output/Thesis.syi output/Thesis.sbl
+-makeindex -s Thesis.ist -t output/Thesis.glg -o output/Thesis.gls output/Thesis.glo
++makeindex -s output/Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
++makeindex -s output/Thesis.ist -t output/Thesis.slg -o output/Thesis.syi output/Thesis.sbl
++makeindex -s output/Thesis.ist -t output/Thesis.glg -o output/Thesis.gls output/Thesis.glo
+ 
+-# Generate bibliography (if using BibTeX)
++# Generate bibliography (only when the document actually uses BibTeX)
+ echo "Step 3/7: Generating bibliography..."
+-bibtex output/Thesis
++if grep -q "\\\\bibdata" output/Thesis.aux 2>/dev/null; then
++    bibtex output/Thesis
++else
++    echo "   Skipped: manual bibliography in use (no \\bibdata in Thesis.aux)."
++fi
+ 
+ # Second compilation
+ echo "Step 4/7: Running pdflatex (second pass)..."
+diff --git a/config.tex b/config.tex
+index b0e0650..1900a07 100644
+--- a/config.tex
++++ b/config.tex
+@@ -1,6 +1,12 @@
+ % Configuration File
+ % This file contains customizable settings for your thesis
+ % Modify these values according to your needs
++%
++% !! IMPORTANT !!
++% This file is NOT currently \input by Thesis.tex, so editing it on its own
++% has no effect on the compiled PDF. Treat it as the reference sheet of the
++% values you need to set, and apply them directly in Thesis.tex until the
++% file is wired into the main document.
+ 
+ % ========================================
+ % THESIS INFORMATION
