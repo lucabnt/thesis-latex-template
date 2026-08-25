@@ -160,7 +160,7 @@ If LaTeX is not installed, the script will display platform-specific installatio
 All standard packages included in full LaTeX distributions:
 - Document structure: report class
 - Mathematics: amsmath, amssymb, amsthm
-- Graphics: graphicx, epsfig, subfigure
+- Graphics: graphicx, subcaption
 - Tables: longtable, multirow
 - Bibliography: bibtex support
 - Glossaries: glossaries package

@@ -81,6 +81,28 @@ You can include figures in your thesis. Here's an example:
 
 You can reference figures using \texttt{ref} command: see Figure \ref{fig:example}.
 
+For side-by-side panels use the \texttt{subfigure} environment from
+\texttt{subcaption}. Each panel needs an explicit width and carries its own
+\texttt{caption}; \texttt{ref} then yields `1.1a', `1.1b' and so on.
+
+% \begin{figure}[h]
+%     \centering
+%     \begin{subfigure}{0.45\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{figures/left.png}
+%         \caption{Side view}
+%         \label{fig:side}
+%     \end{subfigure}\hfill
+%     \begin{subfigure}{0.45\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{figures/right.png}
+%         \caption{Front view}
+%         \label{fig:front}
+%     \end{subfigure}
+%     \caption{The device seen from two angles}
+%     \label{fig:device}
+% \end{figure}
+
 \section{Example of Tables}
 
 Tables can be included as follows:

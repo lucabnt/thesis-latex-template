@@ -204,6 +204,7 @@ The text comes from [`config.tex`](config.tex); the layout is the `OPTION 2` blo
 The template uses the following packages (usually included in standard distributions):
 - `amsmath`, `amssymb`, `amsthm` - Mathematical symbols and environments
 - `graphicx` - Image inclusion
+- `subcaption` - Side-by-side sub-figures with their own captions
 - `hyperref` - Hyperlinks and PDF features
 - `glossaries` - Glossaries and acronyms
 - `fancyhdr` - Custom headers and footers

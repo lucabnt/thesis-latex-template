@@ -34,6 +34,9 @@ All notable changes to this thesis template will be documented in this file.
   (default) and BibTeX, with no other edit needed
 - Removed unused or superseded packages: `epsfig`, `graphics`, `latexsym`,
   `lipsum`, `blindtext`; `lscape` replaced by `pdflscape`
+- Replaced `subfigure`, deprecated since 2003, with `subcaption`; cross-references
+  to panels now read `1.1a` instead of `1.1(a)`, and sub-captions no longer
+  appear in the List of Figures
 - `.gitignore` now also covers artifacts built in the repository root
 - `compile.sh` is committed with its executable bit set
 
