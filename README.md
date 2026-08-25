@@ -1,349 +1,178 @@
 # LaTeX Thesis Template
 
-A comprehensive LaTeX template for Master's and PhD theses, based on a completed thesis project. This template provides a professional structure with all necessary components for academic thesis writing.
+A LaTeX template for Master's and PhD theses: modular chapters, automatic
+front matter, glossaries, and a bibliography you can drive either by hand or
+with BibTeX.
 
-## ⚠️ Disclaimer
+It compiles cleanly out of the box (no errors, no missing packages, no bitmap
+fonts) on TeX Live and MiKTeX. It is a starting point, not a finished thesis:
+check the result against your institution's own formatting rules before you
+submit.
 
-This template compiles cleanly (no errors, no missing packages, no bitmap fonts) on
-TeX Live and MiKTeX with the packages listed under Requirements. It is still a
-starting point rather than a finished thesis, so you should:
+**New here?** Follow [QUICKSTART.md](QUICKSTART.md) — seven steps, about five
+minutes. This file is the full reference; [CHANGELOG.md](CHANGELOG.md) records
+what changed between versions.
 
-- Test compilation on their own system
-- Verify that all LaTeX packages are properly installed
-- Check that the template meets their institution's specific requirements
-- Report any issues or contribute improvements
+## ✨ What you get
 
-**Use at your own discretion.** This is provided as-is without warranty.
-
-## 🙏 Acknowledgments
-
-This template is derived from a LaTeX thesis template that appears to have origins from [**KAUST (King Abdullah University of Science and Technology)**](https://www.overleaf.com/latex/templates/kaust-official-thesis-template/mrcyxjvwpqdn), originally distributed under **Creative Commons CC BY 4.0** license.
-
-**Original Template License:** [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
-
-**Modifications Made:**
-- Complete restructuring and reorganization of content
-- All original thesis content replaced with generic placeholders
-- Added comprehensive documentation (README, QUICKSTART, OVERVIEW, CHANGELOG)
-- Added cross-platform compilation scripts
-- Enhanced with examples for figures, tables, equations, and citations
-- Improved folder structure and organization
-- Added .gitignore and Git-ready configuration
-
-**This Modified Template License:** [CC BY 4.0](LICENSE), the same licence as the
-original. You may use, adapt and redistribute it, including commercially, as long as
-you keep the attribution above. See [LICENSE](LICENSE) for the full text.
-
-**Note:** All specific thesis content has been removed and replaced with generic academic examples. The template structure and LaTeX configuration are derived from the original CC BY 4.0 licensed work.
-
-## 📚 Documentation Files
-
-This template includes multiple documentation files to help you get started:
-
-- **[README.md](README.md)** (this file) - Complete documentation with detailed instructions
-- **[QUICKSTART.md](QUICKSTART.md)** - 5-minute quick start guide for beginners
-- **[TEMPLATE_OVERVIEW.md](TEMPLATE_OVERVIEW.md)** - Comprehensive overview of all template features
-- **[CHANGELOG.md](CHANGELOG.md)** - Version history and planned enhancements
-
-**New users**: Start with [QUICKSTART.md](QUICKSTART.md) for a fast setup!
-
-## ✨ Features
-
-- **Professional formatting** with customizable margins, spacing, and fonts
-- **Automatic generation** of Table of Contents, List of Figures, and List of Tables
-- **Glossaries support** for abbreviations and symbols
-- **Bibliography management** with both manual and BibTeX options
-- **Multiple appendices** support
-- **Two-sided and one-sided** printing options
-- **Compilation scripts** for Windows, Linux, and Mac
-- **Git-ready** with comprehensive `.gitignore`
-- **Well-documented** with examples and comments
-
-## 📁 Project Structure
-
-```
-Thesis-Template/
-├── Thesis.tex              # Main thesis file
-├── config.tex              # Configuration and customization
-├── Abstract.tex            # English abstract
-├── Abstract_IT.tex         # Italian abstract (optional)
-├── Acknowledgment.tex      # Acknowledgments section
-├── Lists.tex               # Glossaries, abbreviations, symbols
-├── Chapter_1.tex           # Introduction chapter
-├── Chapter_2.tex           # Literature review chapter
-├── Chapter_3.tex           # Methodology chapter
-├── Conclusion.tex          # Conclusion chapter
-├── Bibliography.tex        # Manual bibliography
-├── References.bib          # BibTeX bibliography file
-├── Appendix_A.tex          # Appendix A
-├── Appendix_B.tex          # Appendix B
-├── compile.bat             # Windows compilation script
-├── compile.sh              # Linux/Mac compilation script
-├── .gitignore              # Git ignore file
-├── README.md               # This file - Complete documentation
-├── QUICKSTART.md           # Quick start guide for beginners
-├── CHANGELOG.md            # Version history and planned features
-├── TEMPLATE_OVERVIEW.md    # Comprehensive template overview
-├── figures/                # Folder for images and figures
-│   └── placeholder.txt
-├── data/                   # Folder for data and analysis code
-│   └── README.txt
-└── output/                 # Folder for final compiled PDFs
-    └── README.txt
-```
-
-## 📄 Frontispiece Options
-
-Many universities provide an official frontispiece (cover page) in Word format. This template supports two approaches:
-
-### Option 1: Using University-Provided Word Frontispiece (Recommended)
-
-If your university provides an official Word document for the frontispiece:
-
-1. **Fill out the Word document** with your thesis information
-2. **Convert to PDF**:
-   - In Word: File → Save As → PDF
-   - Or use online converters (ensure quality settings are high)
-3. **Save the PDF** as `Frontespizio.pdf` in your thesis directory
-4. **Edit `Thesis.tex`**, in the `OPTION 1` comment block:
-   ```latex
-   % OPTION 1: Use a PDF frontispiece provided by your university
-   \setcounter{page}{1}
-   \pagenumbering{Roman}
-   \includepdf[pages=-]{Frontespizio.pdf}
-   
-   % OPTION 2: Create a LaTeX title page (default)
-   % Comment out this section if using Option 1
-   % \begin{titlepage}
-   % ...
-   % \end{titlepage}
-   ```
-
-**Advantages:**
-- Ensures compliance with university formatting requirements
-- No need to recreate complex layouts in LaTeX
-- Official logos and styling are preserved
-
-### Option 2: LaTeX Title Page (Default)
-
-Use the built-in LaTeX title page (already configured in the template):
-
-```latex
-\begin{titlepage}
-\centering
-\vspace*{2cm}
-{\LARGE\bfseries Your Thesis Title Here\par}
-\vspace{1.5cm}
-{\Large Your Name\par}
-...
-\end{titlepage}
-```
-
-The text comes from [`config.tex`](config.tex); the layout is the `OPTION 2` block in [`Thesis.tex`](Thesis.tex).
-
-**Note:** The frontispiece is now properly centered with the rest of the document. If you experience alignment issues, ensure you're not adding extra spacing commands before the titlepage environment.
-
+- Modular chapters, appendices, and two abstracts (English and Italian)
+- Table of contents, list of figures, list of tables — all generated
+- Lists of abbreviations and symbols via `glossaries`
+- Bibliography by hand or through BibTeX, switched from one setting
+- Roman front matter, arabic main matter, no hardcoded page numbers
+- Vector fonts only, so the PDF stays sharp and PDF/A-compatible
+- One-command compilation on Windows, Linux, and macOS
+- Central `config.tex` for title, author, margins, spacing, and font sizes
 
 ## 🔧 Requirements
 
-### Essential Software
+You need a LaTeX distribution. The compilation scripts check for one and print
+these instructions if it is missing.
 
-1. **LaTeX Distribution** (Required)
+**Windows** — [MiKTeX](https://miktex.org/download) (recommended: smaller
+download, installs missing packages on demand) or
+[TeX Live](https://www.tug.org/texlive/windows.html).
 
-   The compilation scripts will automatically check if LaTeX is installed and provide installation instructions if needed.
+**macOS** — [MacTeX](https://www.tug.org/mactex/), or `brew install --cask mactex`.
 
-   **Windows:**
-   - **[MiKTeX](https://miktex.org/)** (Recommended)
-     - Easier to use with automatic package installation
-     - Smaller initial download (~200MB)
-     - Download: https://miktex.org/download
-   - **[TeX Live](https://www.tug.org/texlive/windows.html)** (Alternative)
-     - More complete distribution
-     - Larger download (~4GB)
-
-   **macOS:**
-   - **[MacTeX](https://www.tug.org/mactex/)** (Full distribution, ~4GB)
-     ```bash
-     # Or install via Homebrew:
-     brew install --cask mactex
-     ```
-
-   **Linux:**
-   
-   Ubuntu/Debian:
-   ```bash
-   # Full installation (recommended, ~4GB)
-   sudo apt-get update
-   sudo apt-get install texlive-full
-   
-   # OR minimal installation (faster, ~1GB)
-   # These four collections cover every package this template uses.
-   sudo apt-get install texlive-latex-base texlive-latex-recommended \
-                        texlive-latex-extra texlive-fonts-recommended \
-                        lmodern
-   ```
-   
-   Fedora/RHEL:
-   ```bash
-   sudo dnf install texlive-scheme-full
-   ```
-   
-   Arch Linux:
-   ```bash
-   sudo pacman -S texlive-most
-   ```
-
-2. **LaTeX Editor** (Optional but recommended)
-   - [TeXstudio](https://www.texstudio.org/) (cross-platform)
-   - [Overleaf](https://www.overleaf.com/) (online)
-   - [Visual Studio Code](https://code.visualstudio.com/) with LaTeX Workshop extension
-   - [TeXmaker](https://www.xm1math.net/texmaker/)
-
-### Required LaTeX Packages
-
-The template uses the following packages (usually included in standard distributions):
-- `amsmath`, `amssymb`, `amsthm` - Mathematical symbols and environments
-- `graphicx` - Image inclusion
-- `subcaption` - Side-by-side sub-figures with their own captions
-- `hyperref` - Hyperlinks and PDF features
-- `glossaries` - Glossaries and acronyms
-- `fancyhdr` - Custom headers and footers
-- `geometry` - Page layout
-- `setspace` - Line spacing
-- `listings` - Code listings
-- `fontenc` + `lmodern` - outline fonts, so the PDF embeds no bitmap glyphs
-- `etoolbox` - drives the `\useBibTeX` switch
-- And many more (see `Thesis.tex` for complete list)
-
-## 🚀 Quick Start
-
-### Method 1: Using Compilation Scripts (Recommended)
-
-The compilation scripts automatically:
-- Check if LaTeX is installed
-- Create the `output/` directory
-- Compile the thesis with all necessary steps
-- Generate the final PDF in `output/Thesis.pdf`
-
-**Windows:**
-```bash
-# Double-click compile.bat or run in command prompt:
-compile.bat
-```
-
-**Linux/Mac:**
-```bash
-# Make the script executable (first time only):
-chmod +x compile.sh
-
-# Run the script:
-./compile.sh
-```
-
-**Note:** If LaTeX is not installed, the scripts will display detailed installation instructions and exit. After installing LaTeX, restart your terminal and run the script again.
-
-### Method 2: Manual Compilation
-
-If you prefer to compile manually or need to customize the compilation process:
+**Linux**
 
 ```bash
-# Create output directory
-mkdir -p output  # Linux/Mac
-# or
-md output        # Windows
+# Ubuntu/Debian - full installation (~4GB, nothing left to think about)
+sudo apt-get update
+sudo apt-get install texlive-full
 
-# Step 1: First LaTeX compilation
-pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
+# OR minimal installation (~1GB) - these cover every package used here
+sudo apt-get install texlive-latex-base texlive-latex-recommended \
+                     texlive-latex-extra texlive-fonts-recommended \
+                     lmodern
 
-# Step 2: Generate glossaries
-makeindex -s output/Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
-makeindex -s output/Thesis.ist -t output/Thesis.slg -o output/Thesis.syi output/Thesis.sbl
-makeindex -s output/Thesis.ist -t output/Thesis.glg -o output/Thesis.gls output/Thesis.glo
+# Fedora/RHEL
+sudo dnf install texlive-scheme-full
 
-# Step 3: Generate bibliography (if using BibTeX)
-bibtex output/Thesis
-
-# Step 4-6: Additional LaTeX compilations
-pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
-pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
-pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
+# Arch Linux
+sudo pacman -S texlive-most
 ```
 
-The final PDF will be located at `output/Thesis.pdf`.
+`lmodern` is a separate package on Debian and Ubuntu: without it the PDF falls
+back to bitmap fonts, which look blurry and are rejected by some submission
+systems.
 
-### Method 3: Using LaTeX Editor
+An editor helps but is optional: [TeXstudio](https://www.texstudio.org/),
+[TeXmaker](https://www.xm1math.net/texmaker/),
+[VS Code](https://code.visualstudio.com/) with LaTeX Workshop, or
+[Overleaf](https://www.overleaf.com/) online.
 
-Most LaTeX editors have a "Build" or "Compile" button. Configure your editor to:
-1. Use `pdflatex` as the compiler
-2. Enable bibliography compilation (BibTeX)
-3. Enable glossary compilation (makeindex)
+### Packages used
 
-## 🎨 Customization
+`amsmath`, `amssymb`, `amsthm` (mathematics) · `graphicx`, `subcaption`
+(figures and side-by-side panels) · `hyperref` (links) · `glossaries`
+(abbreviations and symbols) · `fancyhdr`, `geometry`, `setspace` (page layout)
+· `fontenc` with `lmodern` (outline fonts) · `etoolbox` (drives the
+bibliography switch) · `listings`, `longtable`, `multirow`, and others — see
+the preamble of `Thesis.tex` for the full list.
 
-### Basic Information
+## 📁 Project structure
 
-`config.tex` is read by `Thesis.tex`, so these values drive the title page, the
-abstracts and the page layout. Each entry is marked in the file:
+```
+Thesis.tex          Main file: preamble, and the order everything is included in
+config.tex          Your settings: title, author, margins, spacing, bibliography mode
+Abstract.tex        English abstract
+Abstract_IT.tex     Italian abstract (optional)
+Acknowledgment.tex  Acknowledgments (optional, not included by default)
+Lists.tex           Abbreviations, symbols, glossary entries
+Chapter_1.tex       Introduction, with worked examples of every element
+Chapter_2.tex       Literature review
+Chapter_3.tex       Methodology
+Conclusion.tex      Conclusion
+Bibliography.tex    Manual bibliography (the default)
+References.bib      BibTeX database (used when \useBibTeX is true)
+Appendix_A.tex      Appendix A
+Appendix_B.tex      Appendix B
+compile.sh          Compilation script for Linux and macOS
+compile.bat         Compilation script for Windows
+figures/            Your images
+data/               Data and analysis code
+output/             Everything the compiler produces, including Thesis.pdf
+```
 
-- **LIVE** - change it here and recompile.
-- **MANUAL** - LaTeX cannot read it from here (a document class option, or an
-  `\include` switch); the comment says where to change it instead.
+Add a chapter by creating `Chapter_4.tex` and adding `\include{Chapter_4}` to
+`Thesis.tex`, next to the others. Appendices work the same way, inside the
+`\appendix` block.
+
+## ⚙️ Configuration
+
+Open `config.tex`. Every entry is marked:
+
+- **LIVE** — change it there and recompile.
+- **MANUAL** — LaTeX cannot read it from that file (it is a document class
+  option, or an `\include` switch); the comment says where to change it.
+
+| Setting | | |
+|---|---|---|
+| `\thesisTitle`, `\thesisTitleIT` | LIVE | Title page and the two abstracts |
+| `\thesisAuthor`, `\thesisDegree` | LIVE | Title page and abstracts |
+| `\thesisDepartment`, `\thesisUniversity`, `\thesisDate` | LIVE | Title page |
+| `\supervisorOne`, `\supervisorTwo` | MANUAL | Uncomment the marked lines in the title page block |
+| `\thesisLineSpacing` | LIVE | 1.25 for one-and-a-half, 1.667 for double |
+| `\chapterFontSize`, `\sectionFontSize` | LIVE | Heading sizes, in points |
+| `\leftMargin`, `\rightMargin`, `\topMargin`, `\bottomMargin` | LIVE | Page margins |
+| `\useBibTeX` | LIVE | `false` for the manual bibliography, `true` for BibTeX |
+| `\bibliographyStyle` | LIVE | BibTeX style, when `\useBibTeX` is true |
+| `\printingSide` | MANUAL | A `\documentclass` option at the top of `Thesis.tex` |
+| `\includeItalianAbstract`, `\includeAcknowledgments` | MANUAL | Comment or uncomment the matching `\include` line |
+
+`config.tex` also holds shorthands you can use in the text, and is the right
+place to add your own:
 
 ```latex
-\newcommand{\thesisTitle}{Your Thesis Title Here}
-\newcommand{\thesisAuthor}{Your Name}
-\newcommand{\thesisDegree}{Master of Science}
-\newcommand{\thesisDepartment}{Department Name}
-\newcommand{\thesisUniversity}{University Name}
-\newcommand{\thesisDate}{Month Year}
+\newcommand{\dg}{\ensuremath{^\circ}}      % 25\dg C
+\newcommand{\pow}[1]{\ensuremath{^{#1}}}   % m\pow{2}, s\pow{-1}
 ```
 
-### Formatting Options
+Declare them with `\newcommand`, not `\def`: if the name is already taken you
+get an error instead of silently breaking an existing command.
 
-Adjust formatting in `config.tex`:
+## 📄 Title page
+
+`Thesis.tex` offers two options, marked `OPTION 1` and `OPTION 2` in a comment
+block near `\begin{document}`.
+
+**Option 1 — your university's PDF frontispiece.** Many institutions provide
+an official Word cover page. Fill it in, export it as `Frontespizio.pdf` into
+the project folder, then uncomment the three lines of the `OPTION 1` block and
+comment out the `OPTION 2` titlepage below it. This guarantees compliance and
+keeps official logos intact.
+
+**Option 2 — the LaTeX title page (default).** Its text comes from
+`config.tex`; only the layout lives in `Thesis.tex`.
+
+## ✍️ Writing your thesis
+
+`Chapter_1.tex` contains a worked example of every element below — the fastest
+way to learn the syntax is to read it.
+
+**Figures.** Put images in `figures/`.
 
 ```latex
-% Line spacing (1.25 for 1.5 spacing, 1.667 for 2.0 spacing)
-\newcommand{\thesisLineSpacing}{1.667}
-
-% Font sizes
-\newcommand{\chapterFontSize}{14}
-\newcommand{\sectionFontSize}{14}
-
-% Page margins
-\newcommand{\leftMargin}{25mm}
-\newcommand{\rightMargin}{25mm}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/your_image.png}
+    \caption{Descriptive caption}
+    \label{fig:your_label}
+\end{figure}
 ```
 
-### Adding Chapters
+Reference with `see Figure \ref{fig:your_label}`. For side-by-side panels use
+the `subfigure` environment from `subcaption`; each panel takes an explicit
+width and its own `\caption`, and `\ref` then yields `1.1a`, `1.1b`.
 
-1. Create a new file: `Chapter_X.tex`
-2. Add content following the structure of existing chapters
-3. Include it in `Thesis.tex`:
-   ```latex
-   \include{Chapter_X}
-   ```
-
-### Adding Figures
-
-1. Place your image in the `figures/` folder
-2. Include it in your chapter:
-   ```latex
-   \begin{figure}[h]
-       \centering
-       \includegraphics[width=0.8\linewidth]{figures/your_image.png}
-       \caption{Your caption here}
-       \label{fig:your_label}
-   \end{figure}
-   ```
-3. Reference it in text: `see Figure \ref{fig:your_label}`
-
-### Adding Tables
+**Tables.**
 
 ```latex
 \begin{table}[h]
 \centering
-\caption{Your table caption}
+\caption{Your caption}
 \label{tab:your_label}
 \begin{tabular}{|l|c|r|}
 \hline
@@ -355,156 +184,121 @@ Data 1 & Data 2 & Data 3 \\
 \end{table}
 ```
 
-## 📖 Usage Guide
-
-### Writing Your Abstract
-
-Edit `Abstract.tex` with your thesis summary (150-300 words typically). If you don't need an Italian abstract, you can:
-1. Delete `Abstract_IT.tex`
-2. Comment out the line in `Thesis.tex`: `%\include{Abstract_IT}`
-
-### Managing References
-
-#### Option 1: Manual Bibliography (Default)
-
-Edit `Bibliography.tex` and add entries following the format:
+**Abbreviations and symbols.** Define them in `Lists.tex`:
 
 ```latex
-\hangindent=1em
-\hangafter=1
-Author, A. A. (Year). Title of work. Publisher.
-```
-
-#### Option 2: BibTeX (Recommended for large bibliographies)
-
-1. Add entries to `References.bib`:
-   ```bibtex
-   @article{author2023,
-     author = {Author, A. A.},
-     title = {Title of Article},
-     journal = {Journal Name},
-     year = {2023},
-     volume = {10},
-     pages = {123-145}
-   }
-   ```
-
-2. In `config.tex`, flip the switch (nothing else needs editing):
-   ```latex
-   \newcommand{\useBibTeX}{true}
-   ```
-
-3. Cite in text: `\cite{author2023}`
-
-### Adding Abbreviations and Symbols
-
-Edit `Lists.tex`:
-
-```latex
-% Add abbreviation
 \newacronym{ai}{AI}{Artificial Intelligence}
 
-% Add symbol
 \newglossaryentry{symb:alpha}{
-  name=$\alpha$,
-  type=symbols,
-  description={Significance level},
-  sort=symbolalpha
-}
+  name=$\alpha$, type=symbols,
+  description={Significance level}, sort=symbolalpha}
 ```
 
-Use in text:
-- First use: `\gls{ai}` → "Artificial Intelligence (AI)"
-- Subsequent uses: `\gls{ai}` → "AI"
+Then use `\gls{ai}` in the text: the first occurrence expands to "Artificial
+Intelligence (AI)", later ones stay short. Entries you never use do not appear
+in the lists — that is by design, not a bug.
 
-### Adding Appendices
+## 📚 Bibliography
 
-1. Create `Appendix_X.tex`
-2. Add content
-3. Include in `Thesis.tex`:
-   ```latex
-   \include{Appendix_X}
-   ```
+The default is a manual bibliography: you write the entries by hand in
+`Bibliography.tex`, and cite works in the text by author and year.
+
+To use BibTeX instead, put your entries in `References.bib` and set one value
+in `config.tex`:
+
+```latex
+\newcommand{\useBibTeX}{true}
+```
+
+Nothing else changes. `\cite{author2023}` starts working, the generated
+bibliography replaces the manual page, and `\bibliographyStyle` chooses the
+format (`plain`, `abbrv`, `alpha`, `unsrt`, `apalike`, `IEEEtran`, …).
+
+## 🚀 Compiling
+
+**With the scripts (recommended).** They check that LaTeX is installed, create
+`output/`, and run every pass in the right order — including the glossary and
+bibliography steps that are easy to forget.
+
+```bash
+# Windows: double-click compile.bat, or run it in a terminal
+compile.bat
+
+# Linux and macOS
+./compile.sh
+```
+
+The result is `output/Thesis.pdf`.
+
+**By hand,** if you need to drive the process yourself:
+
+```bash
+mkdir -p output
+pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex
+makeindex -s output/Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
+makeindex -s output/Thesis.ist -t output/Thesis.slg -o output/Thesis.syi output/Thesis.sbl
+makeindex -s output/Thesis.ist -t output/Thesis.glg -o output/Thesis.gls output/Thesis.glo
+bibtex output/Thesis          # only when \useBibTeX is true
+pdflatex -interaction=nonstopmode -output-directory=output Thesis.tex   # three more passes
+```
+
+The `.ist` style file is written into `output/`, so `makeindex` must be pointed
+there. Several passes are needed because the table of contents and the
+cross-references only settle once every page number is known.
+
+**From an editor,** set the compiler to `pdflatex` and enable the BibTeX and
+makeindex steps, or simply call the script as an external build command.
 
 ## 🔍 Troubleshooting
 
-### Common Issues
+**`pdflatex: command not found`** — LaTeX is not installed. See
+[Requirements](#-requirements); the scripts print the same instructions.
 
-**Problem**: "pdflatex: command not found" or "comando non trovato"
-- **Solution**: LaTeX is not installed. Follow the installation instructions in the [Requirements](#requirements) section. The compilation scripts will automatically detect this and provide specific instructions for your operating system.
+**Missing packages** — MiKTeX offers to install them: accept. On TeX Live,
+install the collections listed under Requirements.
 
-**Problem**: "File not found" errors
-- **Solution**: Ensure all `.tex` files are in the same directory as `Thesis.tex`
+**Blurry PDF, or a submission system rejecting the fonts** — `lmodern` is
+missing. On Debian and Ubuntu it is a separate package.
 
-**Problem**: Bibliography not appearing
-- **Solution**: Run the full compilation sequence (use the compilation scripts or see [Manual Compilation](#method-2-manual-compilation))
+**Bibliography or glossaries do not appear** — run the full sequence. A single
+`pdflatex` pass cannot produce them.
 
-**Problem**: Glossaries not showing
-- **Solution**: Run makeindex commands and recompile (the compilation scripts handle this automatically)
+**Page numbers or references look wrong** — compile again; three passes are the
+minimum, and the scripts run four.
 
-**Problem**: Figures not displaying
-- **Solution**: Check that image files are in the `figures/` folder and paths are correct
+**`File not found`** — every `.tex` file must sit next to `Thesis.tex`.
 
-**Problem**: PDF has wrong page numbers
-- **Solution**: Compile multiple times (at least 3 times) to resolve all references. The compilation scripts run 4 passes automatically.
+**Figures do not show** — check that the file really is in `figures/` and that
+the path in `\includegraphics` matches, extension included.
 
-**Problem**: Output files in wrong location
-- **Solution**: The template now outputs all files to the `output/` directory. Look for `output/Thesis.pdf` instead of `Thesis.pdf` in the root directory.
+**Cannot find the PDF** — it is `output/Thesis.pdf`, not in the project root.
 
-### Getting Help
+Still stuck? Read the LaTeX error message from the top: the first error is the
+real one, the rest are usually its consequences. If that does not help,
+[TeX Stack Exchange](https://tex.stackexchange.com/) almost certainly has your
+case.
 
-1. Check LaTeX error messages carefully
-2. Search for error messages online (TeX Stack Exchange is helpful)
-3. Verify all required packages are installed
-4. Try compiling a minimal example to isolate the issue
+## 📝 Working habits that pay off
 
-## 📝 Best Practices
+- Commit early and often; the `.gitignore` already excludes build artifacts.
+- Keep backups somewhere other than your laptop.
+- Compile after every substantial change, so an error has one obvious cause.
+- Name labels for what they are: `fig:methodology_flowchart`, not `fig:fig1`.
+- One chapter per file, and let `Thesis.tex` decide the order.
 
-1. **Version Control**: Use Git to track changes
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial thesis template"
-   ```
+## 🙏 Credits and licence
 
-2. **Regular Backups**: Keep multiple backups of your work
-   - Cloud storage (Dropbox, Google Drive, OneDrive)
-   - External hard drive
-   - University servers
+This template descends from the
+[KAUST Official Thesis Template](https://www.overleaf.com/latex/templates/kaust-official-thesis-template/mrcyxjvwpqdn),
+distributed under CC BY 4.0. It was adapted for a Master's thesis defended in
+2023 at the University of Pavia and the University of Tübingen, then stripped
+of all thesis-specific content and rebuilt as a generic template: restructured
+front matter, cross-platform compilation scripts, worked examples for every
+element, and central configuration.
 
-3. **Compile Frequently**: Compile after major changes to catch errors early
+Licensed under [CC BY 4.0](LICENSE), the same terms as the original. You may
+use, adapt, and redistribute it, including commercially, as long as the
+attribution above is preserved. See [LICENSE](LICENSE) for the full text.
 
-4. **Use Comments**: Document your LaTeX code with comments
-   ```latex
-   % This section describes the methodology
-   ```
-
-5. **Consistent Naming**: Use clear, descriptive names for files and labels
-   - Good: `fig:methodology_flowchart`
-   - Bad: `fig:fig1`
-
-6. **Separate Content**: Keep each chapter in its own file for easier management
-
-## 🤝 Contributing
-
-Improvements and suggestions are welcome! If you find issues or have ideas for enhancements:
-
-1. Document the issue or enhancement
-2. Test your changes thoroughly
-3. Submit with clear description of modifications
-
----
-
-## 📞 Support
-
-For questions or issues:
-- Check the [Troubleshooting](#troubleshooting) section
-- Consult your institution's thesis guidelines
-- Refer to LaTeX documentation: [LaTeX Project](https://www.latex-project.org/)
-- Visit [TeX Stack Exchange](https://tex.stackexchange.com/)
-
----
-
-**Good luck with your thesis! 🎓**
-
-
+Improvements are welcome: describe the problem, test your change, and explain
+what you altered and why.

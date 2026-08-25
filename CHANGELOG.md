@@ -38,6 +38,10 @@ All notable changes to this thesis template will be documented in this file.
   to panels now read `1.1a` instead of `1.1(a)`, and sub-captions no longer
   appear in the List of Figures
 - `.gitignore` now also covers artifacts built in the repository root
+- Documentation consolidated: the installation instructions, project layout
+  and compilation steps were repeated across three files and had already
+  drifted apart. README.md is now the single reference, QUICKSTART.md is a
+  short task list that links to it, and TEMPLATE_OVERVIEW.md was removed
 - `compile.sh` is committed with its executable bit set
 
 ## [1.0.0] - 2024-06-19
@@ -79,7 +83,7 @@ All notable changes to this thesis template will be documented in this file.
 - [ ] Additional chapter templates (Results, Discussion)
 - [ ] More bibliography style examples
 - [ ] Cover page templates for different universities
-- [ ] Makefile for automated compilation
+- [ ] Makefile or latexmk support
 - [ ] Docker container for consistent LaTeX environment
 - [ ] CI/CD integration examples
 - [ ] Additional language support
@@ -88,31 +92,6 @@ All notable changes to this thesis template will be documented in this file.
 - [ ] Integration with reference managers (Zotero, Mendeley)
 
 ### Improvements Under Consideration
-- [ ] Simplified configuration system
 - [ ] More customization options
-- [ ] Better error handling in compilation scripts
 - [ ] Additional documentation for advanced features
-- [ ] Video tutorials
-- [ ] Web-based configuration tool
 
----
-
-## Version History
-
-- **1.0.0** (2024-06-19): Initial release
-
----
-
-## Contributing
-
-If you have suggestions for improvements or find issues, please document them clearly with:
-- Description of the issue or enhancement
-- Steps to reproduce (for issues)
-- Expected vs actual behavior
-- Your LaTeX distribution and version
-
----
-
-## Notes
-
-This template is based on a completed Master's thesis and follows common academic formatting standards. Always verify that the template meets your institution's specific requirements before final submission.
