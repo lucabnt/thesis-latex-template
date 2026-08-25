@@ -54,6 +54,31 @@ output/*.sbl
 # Keep the README
 !output/README.txt
 
+# LaTeX artifacts built in the repository root (TeXstudio, VS Code, Overleaf,
+# or a bare `pdflatex Thesis.tex` without -output-directory)
+*.aux
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.ist
+*.slg
+*.sbl
+*.syi
+
 # OS generated files
 .DS_Store
 .DS_Store?
