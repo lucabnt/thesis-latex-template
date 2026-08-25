@@ -60,11 +60,13 @@
 % BIBLIOGRAPHY OPTIONS
 % ========================================
 
-% MANUAL - set in the --- BIBLIOGRAPHY --- block near the end of Thesis.tex
-\newcommand{\bibliographyStyle}{plain}
-
-% Use BibTeX (true) or manual bibliography (false)
+% LIVE - true  : entries come from References.bib, formatted by \bibliographyStyle
+%        false : entries are written by hand in Bibliography.tex (default)
+% Nothing else needs editing; the whole document follows this switch.
 \newcommand{\useBibTeX}{false}
+
+% LIVE when \useBibTeX is true - e.g. plain, abbrv, alpha, unsrt, apalike, IEEEtran
+\newcommand{\bibliographyStyle}{plain}
 
 % ========================================
 % CUSTOM COMMANDS AND ABBREVIATIONS

@@ -43,7 +43,20 @@ Chapter 2 presents the literature review and theoretical framework. Chapter 3 de
 
 \section{Example of Citations}
 
-You can cite references using the \texttt{cite} command. For example, according to \cite{author2023}, this is an important finding. Multiple citations can be included like this \cite{author2023, anotherauthor2022}.
+\ifusebibtex
+You can cite references using the \texttt{cite} command. For example, according to
+\cite{author2023}, this is an important finding. Multiple citations can be included
+like this \cite{author2023, author2022}. The entries come from \texttt{References.bib}.
+\else
+This template is set to the manual bibliography (\texttt{useBibTeX} is \texttt{false}
+in \texttt{config.tex}), so references are written out by hand in
+\texttt{Bibliography.tex} and cited in the text by author and year, for example
+``as shown by Author (2023)''.
+
+Set \texttt{useBibTeX} to \texttt{true} to switch to \texttt{References.bib}. The
+\texttt{\textbackslash cite} command then becomes available and this paragraph is
+replaced by a worked example, without any other change to the document.
+\fi
 
 \section{Example of Abbreviations and Symbols}
 

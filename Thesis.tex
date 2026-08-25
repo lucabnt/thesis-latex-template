@@ -43,6 +43,11 @@
 
 \usepackage{titlesec}
 
+% Turn the \useBibTeX switch from config.tex into a testable boolean.
+% Used by the BIBLIOGRAPHY block below and by the citation example in Chapter_1.
+\newif\ifusebibtex
+\ifdefstring{\useBibTeX}{true}{\usebibtextrue}{\usebibtexfalse}
+
 % You can define your most used synonyms/acronyms
 % Example: \def\MYUNIVERSITY {My University Name}
 \def\dg{$^\circ$}		 % for degree celsius
@@ -223,14 +228,19 @@ of the requirements for the degree of\\
 
 \cleardoublepage
 % --- BIBLIOGRAPHY -----------------------------------------------------
-% OPTION 1 (default): manual bibliography, edited by hand in Bibliography.tex
-\include{Bibliography}
-%
-% OPTION 2: BibTeX bibliography driven by References.bib.
-% To switch, comment out the \include{Bibliography} line above and
-% uncomment the two lines below, then recompile with compile.sh/compile.bat.
-%\bibliographystyle{plain}   % e.g. plain, abbrv, alpha, unsrt, apalike, IEEEtran
-%\bibliography{References}   % reads References.bib
+% Which of the two is used is decided by \useBibTeX in config.tex.
+% No editing is needed here: set \useBibTeX to true or false and recompile.
+\ifusebibtex
+  % BibTeX: entries come from References.bib, formatted by \bibliographyStyle
+  \cleardoublepage
+  \phantomsection
+  \addcontentsline{toc}{chapter}{Bibliography}
+  \bibliographystyle{\bibliographyStyle}
+  \bibliography{References}
+\else
+  % Manual: entries are written by hand in Bibliography.tex
+  \include{Bibliography}
+\fi
 % ----------------------------------------------------------------------
 
 % $$$$$$$$$$$$$$$$$  include Appendices   $$$$$$$$$$$$$$

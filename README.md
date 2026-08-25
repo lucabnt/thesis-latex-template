@@ -382,10 +382,9 @@ Author, A. A. (Year). Title of work. Publisher.
    }
    ```
 
-2. In `Thesis.tex`, find the `--- BIBLIOGRAPHY ---` block near the end of the file,
-   uncomment the two BibTeX lines and comment out:
+2. In `config.tex`, flip the switch (nothing else needs editing):
    ```latex
-   %\include{Bibliography.tex}
+   \newcommand{\useBibTeX}{true}
    ```
 
 3. Cite in text: `\cite{author2023}`

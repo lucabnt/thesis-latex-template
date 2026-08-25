@@ -45,11 +45,13 @@ Author, H. H. (Year). Title of the web page. Website Name, \textless \url{https:
 \textbf{Note:} This is a manual bibliography format. For automatic bibliography management, consider using BibTeX with a .bib file. To use BibTeX:
 
 \begin{enumerate}
-    \item Create a References.bib file with your references
-    \item Uncomment the two BibTeX lines in the \texttt{--- BIBLIOGRAPHY ---} block near the end of Thesis.tex
-    \item Comment out the \texttt{\textbackslash include\{Bibliography\}} line
-    \item Run: pdflatex, bibtex, pdflatex, pdflatex
+    \item Put your entries in \texttt{References.bib} (a starter file is included)
+    \item Set \texttt{\textbackslash useBibTeX} to \texttt{true} in \texttt{config.tex}
+    \item Recompile with \texttt{compile.sh} or \texttt{compile.bat}
 \end{enumerate}
+
+Nothing else changes: this page is replaced by the generated bibliography, and the
+\texttt{\textbackslash cite} examples in Chapter 1 start working.
 
 \textbf{Example BibTeX entry:}
 
