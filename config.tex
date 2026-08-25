@@ -1,27 +1,28 @@
 % Configuration File
-% This file contains customizable settings for your thesis
-% Modify these values according to your needs
+% This file is \input by Thesis.tex, so the values below drive the document.
 %
-% !! IMPORTANT !!
-% This file is NOT currently \input by Thesis.tex, so editing it on its own
-% has no effect on the compiled PDF. Treat it as the reference sheet of the
-% values you need to set, and apply them directly in Thesis.tex until the
-% file is wired into the main document.
+% LIVE   - the value is used directly; change it here and recompile.
+% MANUAL - LaTeX cannot read the value from here (it is a document class
+%          option or an \include switch); the comment says where to change it.
 
 % ========================================
 % THESIS INFORMATION
 % ========================================
+% LIVE - title page and both abstracts
 \newcommand{\thesisTitle}{Your Thesis Title Here}
+\newcommand{\thesisTitleIT}{Il Titolo della Tua Tesi} % Italian abstract
 \newcommand{\thesisAuthor}{Your Name}
 \newcommand{\thesisDegree}{Master of Science}
 \newcommand{\thesisDepartment}{Department Name}
 \newcommand{\thesisUniversity}{University Name}
 \newcommand{\thesisDate}{Month Year}
-\newcommand{\thesisLocation}{City, Country}
+\newcommand{\thesisLocation}{City, Country} % MANUAL - not shown on the default title page
 
 % ========================================
 % SUPERVISOR INFORMATION
 % ========================================
+% MANUAL - the default title page does not print supervisors. To show them,
+% uncomment the two marked lines in the titlepage block of Thesis.tex.
 \newcommand{\supervisorOne}{Prof. First Supervisor}
 \newcommand{\supervisorTwo}{Prof. Second Supervisor} % Optional
 
@@ -29,14 +30,14 @@
 % FORMATTING OPTIONS
 % ========================================
 
-% Line spacing (1.25 for 1.5 spacing, 1.667 for 2.0 spacing)
+% LIVE - line spacing (1.25 for 1.5 spacing, 1.667 for 2.0 spacing)
 \newcommand{\thesisLineSpacing}{1.667}
 
-% Font size for chapters and sections (in pt)
+% LIVE - font size for chapters and sections (in pt)
 \newcommand{\chapterFontSize}{14}
 \newcommand{\sectionFontSize}{14}
 
-% Page margins (in mm)
+% LIVE - page margins
 \newcommand{\leftMargin}{25mm}
 \newcommand{\rightMargin}{25mm}
 \newcommand{\topMargin}{25mm}
@@ -46,21 +47,20 @@
 % DOCUMENT OPTIONS
 % ========================================
 
-% Two-sided or one-sided printing
-% Use 'twoside' for two-sided, 'oneside' for one-sided
+% MANUAL - a document class option, so it must be edited in the
+% \documentclass line at the top of Thesis.tex.
 \newcommand{\printingSide}{twoside}
 
-% Include Italian abstract (true/false)
+% MANUAL - \include cannot be placed inside a conditional, so comment or
+% uncomment the matching \include line in Thesis.tex instead.
 \newcommand{\includeItalianAbstract}{true}
-
-% Include acknowledgments (true/false)
 \newcommand{\includeAcknowledgments}{false}
 
 % ========================================
 % BIBLIOGRAPHY OPTIONS
 % ========================================
 
-% Bibliography style (e.g., IEEEtran, apa, plain, alpha)
+% MANUAL - set in the --- BIBLIOGRAPHY --- block near the end of Thesis.tex
 \newcommand{\bibliographyStyle}{plain}
 
 % Use BibTeX (true) or manual bibliography (false)
