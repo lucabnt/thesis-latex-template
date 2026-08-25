@@ -35,11 +35,8 @@ sudo pacman -S texlive-most
 
 ## Step 2: Customize Your Thesis
 
-> **Note:** `config.tex` is **not** read by `Thesis.tex` yet, so editing it alone
-> changes nothing in the PDF. Set the real title page inside `Thesis.tex`
-> (Option 2 block) and use `config.tex` as your checklist of values.
-
-The information to fill in:
+Open `config.tex` and fill in your information. It is read by `Thesis.tex`, so
+these values reach the title page and the abstracts directly:
 
 ```latex
 \newcommand{\thesisTitle}{Your Thesis Title Here}
@@ -56,17 +53,21 @@ The information to fill in:
 If your university provides an official Word frontispiece:
 1. Fill out the Word document
 2. Save as PDF: `Frontespizio.pdf`
-3. In `Thesis.tex` (line ~124), uncomment the PDF option and comment out the LaTeX titlepage
+3. In `Thesis.tex`, find the `OPTION 1` comment block, uncomment its three lines,
+   and comment out the `OPTION 2` titlepage below it
 
 ### Option B: Use LaTeX Title Page (Default)
-The template includes a centered LaTeX title page. Customize it in `Thesis.tex` (line ~131).
+The template includes a centered LaTeX title page. Its text comes from `config.tex`;
+the layout itself is the `OPTION 2` block in `Thesis.tex`.
 
 ## Step 4: Edit Your Content
 
 1. **Abstract**: Edit `Abstract.tex` with your thesis summary
 2. **Chapters**: Edit `Chapter_1.tex`, `Chapter_2.tex`, `Chapter_3.tex`
 3. **Conclusion**: Edit `Conclusion.tex`
-4. **Bibliography**: Edit `Bibliography.tex` or `References.bib`
+4. **Bibliography**: by default entries are written by hand in `Bibliography.tex`.
+   To use BibTeX instead, put your entries in `References.bib` and set
+   `\useBibTeX` to `true` in `config.tex` - nothing else changes.
 
 ## Step 5: Add Your Figures
 

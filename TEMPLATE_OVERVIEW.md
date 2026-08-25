@@ -116,12 +116,15 @@ This thesis template is a complete, production-ready LaTeX project based on a su
 ## 📝 Customization Points
 
 ### Easy Customization (config.tex)
-- Thesis title, author, date
-- University and department information
-- Line spacing and font sizes
-- Page margins
-- Bibliography style
-- Document options (two-sided/one-sided)
+
+Marked **LIVE** in the file - change and recompile:
+- Thesis title (English and Italian), author, degree, department, university, date
+- Line spacing, chapter and section font sizes, page margins
+- `\useBibTeX` - manual bibliography (default) or BibTeX, and the BibTeX style
+
+Marked **MANUAL** - the comment in `config.tex` says where to change them:
+- Two-sided/one-sided printing (a `\documentclass` option)
+- Whether the Italian abstract and acknowledgments are included (`\include` lines)
 
 ### Advanced Customization (Thesis.tex)
 - Package selection and configuration
@@ -236,8 +239,8 @@ mkdir -p output
 
 # Compile with output directory
 pdflatex -output-directory=output Thesis.tex
-makeindex -s Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
-bibtex output/Thesis
+makeindex -s output/Thesis.ist -t output/Thesis.alg -o output/Thesis.acr output/Thesis.acn
+bibtex output/Thesis   # only when \useBibTeX is true
 pdflatex -output-directory=output Thesis.tex (3x)
 
 # Result: output/Thesis.pdf

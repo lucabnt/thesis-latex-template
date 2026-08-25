@@ -2,6 +2,36 @@
 
 All notable changes to this thesis template will be documented in this file.
 
+## [1.1.0]
+
+### Fixed
+- Template did not compile: removed `arabtex`, `academicons` and `breakcites`,
+  which were loaded but never used (`breakcites` no longer ships with TeX Live)
+- `\usepackage{utf8}` resolved to ArabTeX's file, not an input encoding;
+  replaced with `\usepackage[utf8]{inputenc}`
+- Glossary, abbreviation and symbol lists were never generated: the compile
+  scripts looked for `Thesis.ist` in the repository root instead of `output/`
+- BibTeX ran unconditionally and printed two errors on every manual-bibliography
+  build; it is now skipped unless the document actually uses it
+- Front matter numbering was hardcoded (`\setcounter{page}{3,5,7,14}`) and broke
+  as soon as a section grew; front matter is now lowercase roman and the
+  bibliography and appendices continue the arabic sequence
+- Duplicate PDF destinations made table-of-contents links jump to the wrong page
+- PDF embedded Type 3 bitmap fonts; `fontenc` + `lmodern` now give outlines
+- `\include{Lists}` in the preamble, `headheight` too small for `fancyhdr`,
+  and two document class options that do not exist
+- `anotherauthor2022` was cited but absent from `References.bib`
+
+### Changed
+- `config.tex` is now read by `Thesis.tex` and actually drives the document;
+  entries are marked LIVE or MANUAL
+- `\useBibTeX` in `config.tex` switches between the manual bibliography
+  (default) and BibTeX, with no other edit needed
+- Removed unused or superseded packages: `epsfig`, `graphics`, `latexsym`,
+  `lipsum`, `blindtext`; `lscape` replaced by `pdflscape`
+- `.gitignore` now also covers artifacts built in the repository root
+- `compile.sh` is committed with its executable bit set
+
 ## [1.0.0] - 2024-06-19
 
 ### Added

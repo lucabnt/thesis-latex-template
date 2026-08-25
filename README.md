@@ -4,7 +4,9 @@ A comprehensive LaTeX template for Master's and PhD theses, based on a completed
 
 ## ⚠️ Disclaimer
 
-This template was automatically generated from a completed thesis project and has not been fully tested for compilation. While the structure and formatting are based on a successfully defended thesis, **complete functionality is not guaranteed**. Users should:
+This template compiles cleanly (no errors, no missing packages, no bitmap fonts) on
+TeX Live and MiKTeX with the packages listed under Requirements. It is still a
+starting point rather than a finished thesis, so you should:
 
 - Test compilation on their own system
 - Verify that all LaTeX packages are properly installed
@@ -101,7 +103,7 @@ If your university provides an official Word document for the frontispiece:
    - In Word: File → Save As → PDF
    - Or use online converters (ensure quality settings are high)
 3. **Save the PDF** as `Frontespizio.pdf` in your thesis directory
-4. **Edit `Thesis.tex`** (around line 124):
+4. **Edit `Thesis.tex`**, in the `OPTION 1` comment block:
    ```latex
    % OPTION 1: Use a PDF frontispiece provided by your university
    \setcounter{page}{1}
@@ -135,7 +137,7 @@ Use the built-in LaTeX title page (already configured in the template):
 \end{titlepage}
 ```
 
-Customize the content directly in [`Thesis.tex`](Thesis.tex:131-146) or use variables from [`config.tex`](config.tex).
+The text comes from [`config.tex`](config.tex); the layout is the `OPTION 2` block in [`Thesis.tex`](Thesis.tex).
 
 **Note:** The frontispiece is now properly centered with the rest of the document. If you experience alignment issues, ensure you're not adding extra spacing commands before the titlepage environment.
 
@@ -206,6 +208,8 @@ The template uses the following packages (usually included in standard distribut
 - `geometry` - Page layout
 - `setspace` - Line spacing
 - `listings` - Code listings
+- `fontenc` + `lmodern` - outline fonts, so the PDF embeds no bitmap glyphs
+- `etoolbox` - drives the `\useBibTeX` switch
 - And many more (see `Thesis.tex` for complete list)
 
 ## 🚀 Quick Start
@@ -275,12 +279,12 @@ Most LaTeX editors have a "Build" or "Compile" button. Configure your editor to:
 
 ### Basic Information
 
-> **Note:** `config.tex` is **not** currently read by `Thesis.tex`. It is a
-> reference sheet of the values you are expected to set. Until it is wired in,
-> edit the title page and margins directly in `Thesis.tex`, and keep
-> `config.tex` in sync as documentation.
+`config.tex` is read by `Thesis.tex`, so these values drive the title page, the
+abstracts and the page layout. Each entry is marked in the file:
 
-The values to customize are:
+- **LIVE** - change it here and recompile.
+- **MANUAL** - LaTeX cannot read it from here (a document class option, or an
+  `\include` switch); the comment says where to change it instead.
 
 ```latex
 \newcommand{\thesisTitle}{Your Thesis Title Here}
